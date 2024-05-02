@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">interview-prep</string>
+    <string name="title_activity_co_ro">CoRoActivity</string>
 </resources>
