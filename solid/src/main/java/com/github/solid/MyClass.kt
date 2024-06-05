@@ -1,5 +1,6 @@
 package com.github.solid
 
+import javax.print.PrintService
 import kotlin.random.Random
 
 class SolidDemo {
@@ -50,32 +51,55 @@ class SMSNotificationService : NotificationService {
 }
 
 // Liskov Substitution
-interface PrintMachine {
-    fun print()
+
+/** in this example it breaks, we need to split contracts
+ * interface Waste {
+ *     fun dispose()
+ * }
+ *
+ * class OrganicWaste : Waste {
+ *     override fun dispose() {
+ *         println("using composte")
+ *     }
+ * }
+ *
+ * class PlasticWaste : Waste {
+ *     override fun dispose() {
+ *         println("using recycle")
+ *     }
+ * }
+ */
+
+interface Recycle {
+    fun recycle()
 }
 
-class LaserPrinter : PrintMachine {
-    override fun print() {
-        println("using LaserPrinter")
+interface Compose {
+    fun compose()
+}
+interface Waste {
+    fun dispose()
+}
+
+class OrganicWaste : Waste, Compose {
+    override fun dispose() {
+        compose()
+    }
+
+    override fun compose() {
+        println("using compose method")
     }
 }
 
-class InkJet : PrintMachine {
-    override fun print() {
-        println("using InkJet")
+class PlasticWaste : Waste, Recycle {
+    override fun dispose() {
+        recycle()
+    }
+
+    override fun recycle() {
+        println("using recycle")
     }
 }
-
-class PrintService {
-    fun printPaper(machine: PrintMachine) {
-        machine.print()
-    }
-}
-
-//fun main() {
-//    PrintService().printPaper(InkJet())
-//    PrintService().printPaper(LaserPrinter())
-//}
 
 //Interface Segregation
 
@@ -114,17 +138,17 @@ class Bus : Vehicle {
     }
 }
 
-fun main() {
-
-    val days = 7
-    repeat(days) {
-        val r = Random(it).nextInt() % 2 == 0
-        when(r) {
-            true -> travel(Car())
-            false -> travel(Bus())
-        }
-    }
-}
+//fun main() {
+//
+//    val days = 7
+//    repeat(days) {
+//        val r = Random(it).nextInt() % 2 == 0
+//        when(r) {
+//            true -> travel(Car())
+//            false -> travel(Bus())
+//        }
+//    }
+//}
 
 fun travel(vehicle: Vehicle) {
     vehicle.move()

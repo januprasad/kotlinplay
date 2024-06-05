@@ -1,3 +1,4 @@
+
 plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
@@ -9,4 +10,5 @@ java {
 }
 dependencies {
     testImplementation("io.mockk:mockk:1.13.11")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
