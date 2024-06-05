@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
-
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.1")
+    testImplementation(libs.mockk)
+    implementation(libs.rxjava)
 }
