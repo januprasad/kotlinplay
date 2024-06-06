@@ -23,10 +23,10 @@ class Mobula {
         return crypto
     }
 
-    suspend fun getPrice(symbol: String = "BTC", dispatcherProvider: DispatcherProvider): Deferred<String> {
+    suspend fun getPrice(symbol: String = "BTC"): Deferred<String> {
         var response: Deferred<String>
         coroutineScope {
-            response = async(dispatcherProvider.io) {
+            response = async(Dispatchers.IO) {
                 return@async client.get("https://api.mobula.io/api/1/market/data?symbol=$symbol")
                     .bodyAsText()
             }
@@ -38,7 +38,7 @@ class Mobula {
         var response: Deferred<String>
         coroutineScope {
             response = async(Dispatchers.IO) {
-                return@async "Abc"
+                return@async s
             }
         }
         return response

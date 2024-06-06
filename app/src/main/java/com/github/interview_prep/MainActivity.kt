@@ -58,7 +58,7 @@ fun App(viewModel: MyViewModel = viewModel()) {
 
         AppState.Init -> {
             Button(onClick = {
-                viewModel.fetchData()
+                viewModel.fetchData("BTC")
             }, modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = "Get Price!",
@@ -66,7 +66,9 @@ fun App(viewModel: MyViewModel = viewModel()) {
             }
         }
 
-        is AppState.Loaded -> TODO()
+        is AppState.Loaded -> {
+
+        }
     }
 
 }
