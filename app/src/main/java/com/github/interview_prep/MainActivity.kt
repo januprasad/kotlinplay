@@ -65,6 +65,8 @@ fun App(viewModel: MyViewModel = viewModel()) {
                 )
             }
         }
+
+        is AppState.Loaded -> TODO()
     }
 
 }

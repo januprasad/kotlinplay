@@ -72,7 +72,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.1")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     testImplementation(libs.mockk)
     implementation(libs.rxjava)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation("app.cash.turbine:turbine:1.1.0")
 }
