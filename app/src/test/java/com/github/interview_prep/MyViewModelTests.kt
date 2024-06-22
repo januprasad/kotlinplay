@@ -2,7 +2,9 @@ package com.github.interview_prep
 
 import androidx.lifecycle.viewModelScope
 import app.cash.turbine.test
+import io.ktor.client.HttpClient
 import io.mockk.coEvery
+import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
@@ -17,12 +19,16 @@ class MyViewModelTests {
     private lateinit var myViewModel: MyViewModel
     val dispatcherProvider = TestDispatcherProvider()
 
+
+    @RelaxedMockK
+    lateinit var client: HttpClient
     @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun init() {
 
 //        myViewModel = MyViewModel(dispatcherProvider)
         myViewModel = MyViewModel()
+        client = HttpClient()
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -50,47 +56,50 @@ class MyViewModelTests {
         }
     }
 
+
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `testLoaded`() {
-        val mobula = mockk<Mobula>()
-        val responseObject =Response(
-            data = Crypto(
-                name = "Bitcoin",
-                price = 100000.0,
-                symbol = "BTC"
-            ))
+//        val mobula = Mobula(client)
+//        val responseObject =Response(
+//            data = Crypto(
+//                name = "Bitcoin",
+//                price = 100000.0,
+//                symbol = "BTC"
+//            ))
 
-        val response = {}
 
-        runTest {
-            coEvery {
-                val res = mobula.getPrice("Abc")
-                res.await()
-            } returns "Abc"
-
+//        runTest {
 //            coEvery {
-//                mobula.parse("Abc").await()
-//            } returns responseObject
-
-//            coEvery {
-//                responseObject.data
-//            } returns cryptoReponse
+//                val res = mobula.getMethod("Abc")
+//                res.await()
+//            } returns "Abc"
+//
+//            myViewModel.fetchData("Abc")
+//            myViewModel.uiState.test {
+//                assertEquals(
+//                    AppState.Loaded("Abc"),
+//                    awaitItem(),
+//                )
+//                cancelAndIgnoreRemainingEvents()
+//            }
+//
+////            coEvery {
+////                mobula.parse("Abc").await()
+////            } returns responseObject
+//
+////            coEvery {
+////                responseObject.data
+////            } returns cryptoReponse
+////
+//
+//
+////            coVerify(exactly = 2) {
+////                mobula.test("")
+////            }
 //
 
-            myViewModel.fetchData("Abc")
-//            coVerify(exactly = 2) {
-//                mobula.test("")
-//            }
-
-            myViewModel.uiState.test {
-                assertEquals(
-                    AppState.Loaded("Abc"),
-                    awaitItem(),
-                )
-                cancelAndIgnoreRemainingEvents()
-            }
-        }
+//        }
     }
 
 

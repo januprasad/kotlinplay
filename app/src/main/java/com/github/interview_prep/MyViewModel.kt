@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.ktor.client.HttpClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,10 +18,8 @@ class MyViewModel() : ViewModel() {
     fun fetchData(symbol: String) {
         _uiState.value = AppState.Loading
         viewModelScope.launch(Dispatchers.IO) {
-//            val response = mobula.getPrice(symbol).await()
-            val result = mobula.test(symbol)
-//            val crypto = mobula.parse(response).await()
-            _uiState.value = AppState.Loaded(result.await())
+            val response = mobula.getMethod(symbol).await()
+//            _uiState.value = AppState.Loaded(result.await())
         }
     }
 
