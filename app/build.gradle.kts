@@ -80,4 +80,7 @@ dependencies {
     implementation(libs.rxjava)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation("app.cash.turbine:turbine:1.1.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.1")
+    testImplementation(libs.mockk)
+    implementation(libs.rxjava)
 }

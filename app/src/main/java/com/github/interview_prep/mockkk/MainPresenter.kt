@@ -54,6 +54,5 @@ class MainPresenter(
                     view.onError(e)
                 }
             })
-
     }
 }
