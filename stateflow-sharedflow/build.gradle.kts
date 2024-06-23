@@ -1,16 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlinxSerialization)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "com.github.interview_prep"
+    namespace = "com.github.stateflow_sharedflow"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.github.interview_prep"
+        applicationId = "com.github.stateflow_sharedflow"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -32,22 +30,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
@@ -68,19 +66,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    //extras
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.core)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    testImplementation(libs.mockk)
-    implementation(libs.rxjava)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.turbine)
-    implementation(libs.androidx.lifecycle.viewmodel.compose.v282)
-    testImplementation(libs.mockk)
-    implementation(libs.rxjava)
 }

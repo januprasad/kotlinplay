@@ -23,3 +23,4 @@ rootProject.name = "interview-prep"
 include(":app")
 include(":solid")
 include(":crypto")
+include(":stateflow-sharedflow")

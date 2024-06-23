@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/crypto" />
             <option value="$PROJECT_DIR$/solid" />
+            <option value="$PROJECT_DIR$/stateflow-sharedflow" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
