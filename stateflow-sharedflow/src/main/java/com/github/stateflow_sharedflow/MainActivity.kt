@@ -25,6 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.stateflow_sharedflow.ui.theme.InterviewprepTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.receiveAsFlow
 
 
 @AndroidEntryPoint
@@ -48,8 +49,8 @@ fun MyApp(viewModel: MainViewModel = viewModel()) {
         mutableStateOf("")
     }
     LaunchedEffect(key1 = true) {
-        viewModel.testEvent.collect {
-            state = when(it) {
+        viewModel.testChannel.receiveAsFlow().collect {
+            state = when (it) {
                 UIEvent.Green -> {
                     it.toString()
                 }

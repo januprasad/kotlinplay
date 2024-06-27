@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mockito</string>
+    <string name="name_label">HELLO WORLD</string>
+</resources>

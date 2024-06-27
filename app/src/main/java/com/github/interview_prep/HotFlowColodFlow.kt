@@ -45,20 +45,3 @@ private fun doLongRunningTask(): Flow<Int> {
         emit(1000)
     }
 }
-
-suspend fun testColdFlow() {
-    val someColdFlow = flow<Int> {
-        (1..5).forEach {
-            delay(100)
-            emit(it)
-        }
-    }
-
-    someColdFlow.retry(2).collect {
-        println(it)
-    }
-    delay(3000)
-    someColdFlow.collect {
-        println(it)
-    }
-}

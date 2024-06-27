@@ -1,5 +1,6 @@
 [versions]
 agp = "8.4.2"
+core = "1.6.0"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -14,6 +15,8 @@ coroutines = "1.8.1"
 ktor = "2.3.10"
 jetbrainsKotlinJvm = "2.0.0"
 lifecycleViewmodelCompose = "2.8.2"
+mockitoCore = "5.7.0"
+mockitoKotlin = "5.3.1"
 mockk = "1.13.11"
 rxjava = "3.1.8"
 turbine = "1.1.0"
@@ -21,6 +24,7 @@ hilt = "2.51.1"
 ksp = "2.0.0-1.0.22"
 
 [libraries]
+androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-compose-v282 = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
@@ -44,6 +48,8 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
