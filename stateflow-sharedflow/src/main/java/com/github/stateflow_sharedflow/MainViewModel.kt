@@ -1,16 +1,28 @@
 package com.github.stateflow_sharedflow
 
+import android.util.Log
+import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+data class UIState(
+    var name: String = "",
+    var id: Int = 0
+)
 
 class MainViewModel : ViewModel() {
     val testEvent = MutableSharedFlow<UIEvent>()
+    private val _testState = MutableStateFlow(UIState())
+    var testState = _testState.asStateFlow()
     val testChannel = Channel<UIEvent>()
 
     init {
@@ -28,6 +40,7 @@ class MainViewModel : ViewModel() {
             testEvent.emit(UIEvent.Red)
         }
     }
+
     private fun startChannel() {
         viewModelScope.launch {
             delay(1000)
@@ -36,6 +49,14 @@ class MainViewModel : ViewModel() {
             testChannel.send(UIEvent.Green)
             delay(5000)
             testChannel.send(UIEvent.Red)
+        }
+    }
+
+    fun updateState(name: String, id: String) {
+        viewModelScope.launch(Dispatchers.Default) {
+            _testState.update { state ->
+                state.copy(name = name, id = id.toInt())
+            }
         }
     }
 }
