@@ -5,7 +5,9 @@ import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -13,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.newSingleThreadContext
 
 data class UIState(
     var name: String = "",
@@ -20,18 +23,22 @@ data class UIState(
 )
 
 class MainViewModel : ViewModel() {
+
+
+    val testChannel = Channel<UIEvent>()
     val testEvent = MutableSharedFlow<UIEvent>()
     private val _testState = MutableStateFlow(UIState())
     var testState = _testState.asStateFlow()
-    val testChannel = Channel<UIEvent>()
+
 
     init {
-//        startFlow()
-        startChannel()
+        startFlow()
+//        startChannel()
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class, DelicateCoroutinesApi::class)
     private fun startFlow() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Unconfined) {
             delay(1000)
             testEvent.emit(UIEvent.Red)
             delay(2000)

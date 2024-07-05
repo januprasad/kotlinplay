@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,12 +31,24 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.stateflow_sharedflow.ui.theme.InterviewprepTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 
 @AndroidEntryPoint
@@ -53,6 +66,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+suspend fun ageFirstDigit() : String{
+    delay(2000)
+    return "1"
+}
+suspend fun ageSecondDigit(): String {
+    return try {
+        delay(3000)
+        "8" // Replace with actual data fetching logic
+    } catch (e: Exception) {
+        "Error fetching age" // Or handle the error more appropriately
+    }
+}
 @Composable
 fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) {
     var state by remember {
@@ -63,21 +88,42 @@ fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) 
         mutableStateOf("")
     }
 
+
+
     var text by remember { mutableStateOf(uiState.value.name) }
     var age by remember { mutableStateOf("") }
-//    LaunchedEffect(key1 = true) {
-//        viewModel.testChannel.receiveAsFlow().collect {
-//            state = when (it) {
-//                UIEvent.Green -> {
-//                    it.toString()
-//                }
-//
-//                UIEvent.Red -> {
-//                    it.toString()
-//                }
-//            }
-//        }
-//    }
+
+
+    SideEffect {
+        CoroutineScope(Dispatchers.Default).launch {
+            withContext(Dispatchers.IO) {
+                delay(3000L)
+
+               val ageFirstDigit =  async {
+                    ageFirstDigit()
+                }
+                val ageSecondDigit =  async {
+                    ageSecondDigit()
+                }
+                age = ageFirstDigit.await() + ageSecondDigit.await()
+                println(age)
+            }
+        }
+    }
+
+    LaunchedEffect(key1 = true) {
+        viewModel.testEvent.collect {
+            state = when (it) {
+                UIEvent.Green -> {
+                    it.toString()
+                }
+
+                UIEvent.Red -> {
+                    it.toString()
+                }
+            }
+        }
+    }
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(paddingValues)

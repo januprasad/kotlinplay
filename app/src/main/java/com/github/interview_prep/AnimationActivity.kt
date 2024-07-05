@@ -129,9 +129,7 @@ fun StamperPathEffectText(text: String, fontSize: TextUnit) {
     )
 }
 
-internal val familyRestoCreamy = FontFamily(
-    Font(R.font.creamy, FontWeight.Normal),
-)
+
 
 @ExperimentalComposeUiApi
 @Composable
@@ -139,11 +137,11 @@ fun OutlineBorderText(
     text: String,
     modifier: Modifier = Modifier,
     fillColors: List<Color>,
-    outlineColor: Color,
+    borderOutlineColor: Color,
     fontFamily: FontFamily,
     fontSize: TextUnit = TextUnit.Unspecified,
     borderWidth: Float = 0.0f,
-    outlineDrawStyle: Stroke = Stroke(width = borderWidth, pathEffect = cornerPathEffect(borderWidth)),
+    borderOutlineDrawStroke: Stroke = Stroke(width = borderWidth, pathEffect = cornerPathEffect(borderWidth)),
 ) {
     CompositionLocalProvider(
         LocalTextStyle provides convertStyle(
@@ -156,10 +154,10 @@ fun OutlineBorderText(
         Box(modifier = modifier) {
             Text(
                 text = text,
-                color = outlineColor,
+                color = borderOutlineColor,
                 style = style.copy(
                     shadow = null,
-                    drawStyle = outlineDrawStyle,
+                    drawStyle = borderOutlineDrawStroke,
                 ),
             )
 
@@ -187,13 +185,15 @@ fun convertStyle(style: TextStyle, fontSize: TextUnit, fontFamily: FontFamily): 
 fun OutlineBorderTextExample(text: String) {
     OutlineBorderText(
         text = text,
-        fontSize = 60.sp,
-        outlineColor = Color(0xFF934BBD),
+        borderOutlineColor = Color(0xFF162422),
         borderWidth = 10.0f,
         fillColors = listOf(Color(0xffde9707),Color(0xFFE91E63)),
         fontFamily = familyRestoCreamy
     )
 }
+internal val familyRestoCreamy = FontFamily(
+    Font(R.font.creamy, FontWeight.Normal),
+)
 
 @OptIn(ExperimentalAnimationGraphicsApi::class)
 @Composable
