@@ -14,7 +14,7 @@ class EventUpdateWorker(context: Context, params: WorkerParameters) : Worker(con
         val inputData = inputData // Retrieve input data
         val stringValue = inputData.getString(Events.Event)
         updateEvent(stringValue)
-        return Result.success()
+        return Result.success(Data.Builder().putString(Events.Event, stringValue).build())
     }
 
     private fun updateEvent(stringValue: String?) {
@@ -38,4 +38,5 @@ fun createEventWorkerRequest(event: String): OneTimeWorkRequest {
 object Events {
     const val Event = "Event"
     const val Test = "Test"
+    const val Test2 = "Test2"
 }

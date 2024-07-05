@@ -43,6 +43,7 @@ class WorkManagerActivity : AppCompatActivity() {
         }
         binding.buttonWorkerSampleEventCancelAndRestart.setOnClickListener {
             eventUpdateManager.exec()
+            eventUpdateManager.cancelAndRestart()
         }
 
     }

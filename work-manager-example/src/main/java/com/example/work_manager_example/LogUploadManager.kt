@@ -26,7 +26,7 @@ class LogUploadManager(private val activityContext: WorkManagerActivity) {
         WorkManager.getInstance(activityContext).cancelWorkById(workReq.id)
     }
 
-    val observerUploadLog: (WorkInfo) -> Unit = { workInfo ->
+    private val observerUploadLog: (WorkInfo) -> Unit = { workInfo ->
         when (workInfo.state) {
             WorkInfo.State.SUCCEEDED -> {
                 toastManager.showToast(activityContext.getString(R.string.successfully_uploaded))
