@@ -17,7 +17,7 @@ fun main() = runBlocking {
             }
         }
     }
-//    jobs.forEach { it.join() }
+    jobs.forEach { it.join() }
     delay(1000L)
     println("Counter: $counter")
 }

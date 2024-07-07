@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/worker_toast"
+        android:textAllCaps="false"
         app:layout_constraintTop_toTopOf="parent"
         />
 
@@ -22,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/worker_after_twoseconds"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/buttonWorkerSampleToast"
         tools:layout_editor_absoluteX="10dp" />
     <Button
@@ -29,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/upload_cancel_if_double_clicked"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/buttonWorkerSampleAfterTwoSeconds"
         tools:layout_editor_absoluteX="10dp" />
 
@@ -36,6 +39,7 @@
         android:id="@+id/buttonWorkerSampleEventUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:text="@string/provide_sample_event_update"
         app:layout_constraintTop_toBottomOf="@+id/buttonWorkerSampleCancelAll"
         tools:layout_editor_absoluteX="10dp" />
@@ -44,6 +48,7 @@
         android:id="@+id/buttonWorkerSampleEventCancelAndRestart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:text="@string/provide_sample_event_update_relaunch"
         app:layout_constraintTop_toBottomOf="@+id/buttonWorkerSampleEventUpdate"
         tools:layout_editor_absoluteX="10dp" />

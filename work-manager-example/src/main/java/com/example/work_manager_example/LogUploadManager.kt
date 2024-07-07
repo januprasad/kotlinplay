@@ -4,22 +4,26 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 
-class LogUploadManager(private val activityContext: WorkManagerActivity) {
+class LogUploadManager(private val activityContext: WorkManagerActivity) : WorkerContract{
     private lateinit var workReq: WorkRequest
     private var toastManager: ToastManager = ToastManager(activityContext)
 
-    fun exec() {
+    override fun exec() {
         workReq = createUploadLogWorkRequest()
-        WorkManager.getInstance(activityContext).enqueue(workReq)
-        WorkManager.getInstance(activityContext).getWorkInfoByIdLiveData(workReq.id)
-            .observe(activityContext, observerUploadLog)
+        WorkManager.getInstance(activityContext).apply {
+            enqueue(workReq)
+            getWorkInfoByIdLiveData(workReq.id)
+                .observe(activityContext, observerUploadLog)
+        }
     }
 
     fun execAfter2Seconds() {
         workReq = createUploadLogWorkRequest(2000L)
-        WorkManager.getInstance(activityContext).enqueue(workReq)
-        WorkManager.getInstance(activityContext).getWorkInfoByIdLiveData(workReq.id)
-            .observe(activityContext, observerUploadLog)
+        WorkManager.getInstance(activityContext).apply {
+            enqueue(workReq)
+            getWorkInfoByIdLiveData(workReq.id)
+                .observe(activityContext, observerUploadLog)
+        }
     }
 
     fun cancelAll() {

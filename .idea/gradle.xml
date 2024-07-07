@@ -10,7 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bound-service-example" />
             <option value="$PROJECT_DIR$/crypto" />
+            <option value="$PROJECT_DIR$/job-scheduler-example" />
             <option value="$PROJECT_DIR$/mockito" />
             <option value="$PROJECT_DIR$/sample-xml-app" />
             <option value="$PROJECT_DIR$/solid" />
