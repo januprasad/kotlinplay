@@ -14,6 +14,8 @@
             <option value="$PROJECT_DIR$/crypto" />
             <option value="$PROJECT_DIR$/job-scheduler-example" />
             <option value="$PROJECT_DIR$/mockito" />
+            <option value="$PROJECT_DIR$/prod-flavours-test" />
+            <option value="$PROJECT_DIR$/rx-android-jav" />
             <option value="$PROJECT_DIR$/sample-xml-app" />
             <option value="$PROJECT_DIR$/solid" />
             <option value="$PROJECT_DIR$/stateflow-sharedflow" />

@@ -1,16 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "com.github.interview_prep"
+    namespace = "com.example.prod_flavours_test"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.github.interview_prep"
+        applicationId = "com.example.prod_flavours_test"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -32,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
@@ -46,8 +45,18 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+    setFlavorDimensions(listOf("version"))
+    productFlavors {
+        create("freeVersion") {
+            dimension = "version"
+            applicationIdSuffix = ".free"
+            versionNameSuffix = "-free"
+        }
+        create("premiumVersion") {
+            dimension = "version"
+            applicationIdSuffix = ".premium"
+            versionNameSuffix = "-premium"
+        }
     }
 }
 
@@ -61,7 +70,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.animation.graphics.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,19 +77,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    // extras
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.core)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    testImplementation(libs.mockk)
-    implementation(libs.rxjava)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.turbine)
-    implementation(libs.androidx.lifecycle.viewmodel.compose.v282)
-    testImplementation(libs.mockk)
-    implementation(libs.rxjava)
 }
