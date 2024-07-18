@@ -1,17 +1,14 @@
 package com.github.stateflow_sharedflow
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -25,31 +22,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.stateflow_sharedflow.ui.theme.InterviewprepTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
-
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -66,18 +52,19 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-suspend fun ageFirstDigit() : String{
+suspend fun ageFirstDigit(): String  {
     delay(2000)
     return "1"
 }
-suspend fun ageSecondDigit(): String {
-    return try {
+
+suspend fun ageSecondDigit(): String =
+    try {
         delay(3000)
         "8" // Replace with actual data fetching logic
     } catch (e: Exception) {
         "Error fetching age" // Or handle the error more appropriately
     }
-}
+
 @Composable
 fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) {
     var state by remember {
@@ -88,23 +75,22 @@ fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) 
         mutableStateOf("")
     }
 
-
-
     var text by remember { mutableStateOf(uiState.value.name) }
     var age by remember { mutableStateOf("") }
-
 
     SideEffect {
         CoroutineScope(Dispatchers.Default).launch {
             withContext(Dispatchers.IO) {
                 delay(3000L)
 
-               val ageFirstDigit =  async {
-                    ageFirstDigit()
-                }
-                val ageSecondDigit =  async {
-                    ageSecondDigit()
-                }
+                val ageFirstDigit =
+                    async {
+                        ageFirstDigit()
+                    }
+                val ageSecondDigit =
+                    async {
+                        ageSecondDigit()
+                    }
                 age = ageFirstDigit.await() + ageSecondDigit.await()
                 println(age)
             }
@@ -113,25 +99,28 @@ fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) 
 
     LaunchedEffect(key1 = true) {
         viewModel.testEvent.collect {
-            state = when (it) {
-                UIEvent.Green -> {
-                    it.toString()
-                }
+            state =
+                when (it) {
+                    UIEvent.Green -> {
+                        it.toString()
+                    }
 
-                UIEvent.Red -> {
-                    it.toString()
+                    UIEvent.Red -> {
+                        it.toString()
+                    }
                 }
-            }
         }
     }
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(paddingValues)
-        .drawBehind {
-            drawRect(
-                color = resolveState(state)
-            )
-        }
+    Column(
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .drawBehind {
+                    drawRect(
+                        color = resolveState(state),
+                    )
+                },
     ) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
@@ -139,7 +128,7 @@ fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) 
             onValueChange = {
                 name = it
             },
-            label = { Text("Name") }
+            label = { Text("Name") },
         )
         TextField(
             modifier = Modifier.fillMaxWidth(),
@@ -148,7 +137,7 @@ fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) 
                 age = it
             },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-            label = { Text("Age") }
+            label = { Text("Age") },
         )
         Button(onClick = { viewModel.updateState(name, age) }) {
             Text(text = "Submit")

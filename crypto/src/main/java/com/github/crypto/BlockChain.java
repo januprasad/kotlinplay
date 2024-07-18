@@ -22,8 +22,8 @@ public class BlockChain {
     // standard getters and setters
     public String calculateBlockHash() {
         String dataToHash = previousHash
-                + Long.toString(timeStamp)
-                + Integer.toString(nonce)
+                + timeStamp
+                + nonce
                 + data;
         MessageDigest digest = null;
         byte[] bytes = null;
@@ -55,7 +55,7 @@ public class BlockChain {
                 102323L
         );
         b.calculateBlockHash();
-        b.mineBlock(0);
+        System.out.println(b.mineBlock(0));
 
     }
 }

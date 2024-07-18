@@ -10,10 +10,16 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bitcoinj-utils" />
             <option value="$PROJECT_DIR$/bound-service-example" />
+            <option value="$PROJECT_DIR$/clean-arch" />
             <option value="$PROJECT_DIR$/crypto" />
             <option value="$PROJECT_DIR$/job-scheduler-example" />
+            <option value="$PROJECT_DIR$/koin-test" />
             <option value="$PROJECT_DIR$/mockito" />
+            <option value="$PROJECT_DIR$/multithread-test" />
+            <option value="$PROJECT_DIR$/parcelize_test" />
+            <option value="$PROJECT_DIR$/problem-solving-questions" />
             <option value="$PROJECT_DIR$/prod-flavours-test" />
             <option value="$PROJECT_DIR$/rx-android-jav" />
             <option value="$PROJECT_DIR$/sample-xml-app" />

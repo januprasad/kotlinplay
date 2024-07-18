@@ -14,11 +14,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
-class CoRoViewModel() : ViewModel() {
+class CoRoViewModel : ViewModel() {
     fun test() {
-        val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
-            println("Handle $exception in CoroutineExceptionHandler")
-        }
+        val coroutineExceptionHandler =
+            CoroutineExceptionHandler { _, exception ->
+                println("Handle $exception in CoroutineExceptionHandler")
+            }
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
 //            executeOneByOne()
 //            executeOneAccordingCorotineFree()
@@ -31,20 +32,22 @@ class CoRoViewModel() : ViewModel() {
         }
     }
 
-    private fun runBlockSample() = runBlocking {
-        delay(3000L)
-        println("Done")
-    }
+    private fun runBlockSample() =
+        runBlocking {
+            delay(3000L)
+            println("Done")
+        }
 
     private suspend fun testGlobalScope() {
         GlobalScope.launch {
-            //no lifecycle
-            //long running task
-            //crash
+            // no lifecycle
+            // long running task
+            // crash
         }
-        val exceptionHandler = CoroutineExceptionHandler {
-            _,_ -> println("exception")
-        }
+        val exceptionHandler =
+            CoroutineExceptionHandler { _, _ ->
+                println("exception")
+            }
         CoroutineScope(Dispatchers.Default + exceptionHandler).launch {
             println("Hello Scope")
             runBlocking {
@@ -76,11 +79,11 @@ class CoRoViewModel() : ViewModel() {
                     }
 
                     // ----------- OR We can also write async/await inside coroutineScope
-                    val deferredResult1 = async(Dispatchers.IO) {
-                        throw IllegalStateException("Error thrown in async")
-                    }
+                    val deferredResult1 =
+                        async(Dispatchers.IO) {
+                            throw IllegalStateException("Error thrown in async")
+                        }
                     deferredResult1.await()
-
                 }
             } catch (e: Exception) {
                 println("Handle $e in try/catch")
@@ -102,18 +105,20 @@ class CoRoViewModel() : ViewModel() {
 private suspend fun asyncMode1() {
     withContext(Dispatchers.IO) {
         Log.v("Log", "imagine db operations")
-        val result = async {
-            //imagine db operations
-            delay(1000)
-            Log.v("Log", "imagine db operations")
-            return@async 100
-        }
+        val result =
+            async {
+                // imagine db operations
+                delay(1000)
+                Log.v("Log", "imagine db operations")
+                return@async 100
+            }
         Log.v("Log", "imagine heavy calculation")
-        val result1 = async {
-            //image heavy calculation
-            delay(3000)
-            return@async 100 + result.await()
-        }
+        val result1 =
+            async {
+                // image heavy calculation
+                delay(3000)
+                return@async 100 + result.await()
+            }
         val resultString = result1.await()
         Log.v("Log", resultString.toString())
     }
@@ -122,17 +127,19 @@ private suspend fun asyncMode1() {
 private suspend fun asyncMode() {
     withContext(Dispatchers.IO) {
         Log.v("Log", "imagine db operations")
-        val result = async {
-            //imagine db operations
-            delay(1000)
-            return@async 100
-        }
+        val result =
+            async {
+                // imagine db operations
+                delay(1000)
+                return@async 100
+            }
         Log.v("Log", "imagine heavy calculation")
-        val result1 = async {
-            //image heavy calculation
-            delay(2000)
-            return@async 100
-        }
+        val result1 =
+            async {
+                // image heavy calculation
+                delay(2000)
+                return@async 100
+            }
         val resultString = result.await() + result1.await()
         Log.v("Log", resultString.toString())
     }

@@ -54,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         };
         Handler handler = new Handler();
         handler.postDelayed(runnable, 3000);
+
+        /**
+         * forground service
+         */
+
+        Intent intent = new Intent(this, MyForegroundService.class);
+        startService(intent);
     }
 
     @Override

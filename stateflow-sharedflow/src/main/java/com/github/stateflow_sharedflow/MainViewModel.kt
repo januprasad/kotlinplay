@@ -1,10 +1,7 @@
 package com.github.stateflow_sharedflow
 
-import android.util.Log
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,21 +12,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.newSingleThreadContext
 
 data class UIState(
     var name: String = "",
-    var id: Int = 0
+    var id: Int = 0,
 )
 
 class MainViewModel : ViewModel() {
-
-
     val testChannel = Channel<UIEvent>()
     val testEvent = MutableSharedFlow<UIEvent>()
     private val _testState = MutableStateFlow(UIState())
     var testState = _testState.asStateFlow()
-
 
     init {
         startFlow()
@@ -59,7 +52,10 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun updateState(name: String, id: String) {
+    fun updateState(
+        name: String,
+        id: String,
+    ) {
         viewModelScope.launch(Dispatchers.Default) {
             _testState.update { state ->
                 state.copy(name = name, id = id.toInt())
@@ -70,6 +66,6 @@ class MainViewModel : ViewModel() {
 
 sealed class UIEvent {
     object Red : UIEvent()
-    object Green : UIEvent()
 
+    object Green : UIEvent()
 }

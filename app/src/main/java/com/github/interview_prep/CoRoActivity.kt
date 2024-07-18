@@ -16,7 +16,6 @@ import com.github.interview_prep.ui.theme.InterviewprepTheme
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -25,17 +24,18 @@ import kotlinx.coroutines.supervisorScope
 class CoRoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        val handler = CoroutineExceptionHandler { _, t ->
-            println("Caught this $t")
-        }
+        MyHelper.getInstance(this)
+        val handler =
+            CoroutineExceptionHandler { _, t ->
+                println("Caught this $t")
+            }
         CoroutineScope(Dispatchers.IO + handler).launch {
             supervisorScope {
-                val def = async {
-                    delay(3000L)
-                    throw IllegalArgumentException()
-                }
+                val def =
+                    async {
+                        delay(3000L)
+                        throw IllegalArgumentException()
+                    }
                 launch {
                     println(def.join())
                 }
@@ -46,7 +46,8 @@ class CoRoActivity : ComponentActivity() {
             }
         }
 
-
+        lifecycleScope.launch(Dispatchers.IO) {
+        }
 
         enableEdgeToEdge()
         setContent {
@@ -54,7 +55,7 @@ class CoRoActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
                     )
                 }
             }
@@ -63,10 +64,13 @@ class CoRoActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier,
+) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
