@@ -61,6 +61,62 @@ fun SampleApp(innerPadding: PaddingValues) {
 
 @Composable
 fun bazeiercurves() {
+    val backgroundColor = listOf(Color(0xFF08244B), Color(0xFFDB0B6B))
+    val sunColor = listOf(Color(0xFF2E8A0D), Color(0xFF2E8A0D))
+    Canvas(
+        modifier =
+            Modifier
+                .size(100.dp)
+                .padding(23.dp),
+    ) {
+        val width = size.width
+        val height = size.height
+        drawRoundRect(
+            brush = Brush.verticalGradient(backgroundColor),
+            cornerRadius = CornerRadius(50f, 50f),
+        )
+        val path =
+            Path().apply {
+                moveTo(20f, 10f)
+                quadraticBezierTo(
+                    25f,
+                    65f,
+                    100f,
+                    10f,
+                )
+//                cubicTo(
+//                    width.times(.93f),
+//                    height.times(.72f),
+//                    width.times(.98f),
+//                    height.times(.41f),
+//                    width.times(.76f),
+//                    height.times(.40f),
+//                )
+//                cubicTo(
+//                    width.times(.75f),
+//                    height.times(.21f),
+//                    width.times(.35f),
+//                    height.times(.21f),
+//                    width.times(.38f),
+//                    height.times(.50f),
+//                )
+//                cubicTo(
+//                    width.times(.25f),
+//                    height.times(.50f),
+//                    width.times(.20f),
+//                    height.times(.69f),
+//                    width.times(.41f),
+//                    height.times(.72f),
+//                )
+                close()
+            }
+        drawPath(path = path, color = Color.White.copy(alpha = .40f))
+        drawRect(
+            topLeft = Offset(width.times(0.33f), height.times(0.7f)),
+            size = Size(width.times(0.33f), height.times(0.05f)),
+            brush = Brush.verticalGradient(sunColor),
+        )
+    }
 }
 
 @Composable
