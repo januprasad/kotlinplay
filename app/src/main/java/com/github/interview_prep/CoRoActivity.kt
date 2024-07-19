@@ -24,7 +24,7 @@ import kotlinx.coroutines.supervisorScope
 class CoRoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MyHelper.getInstance(this)
+//        MyHelper.getInstance(this)
         val handler =
             CoroutineExceptionHandler { _, t ->
                 println("Caught this $t")

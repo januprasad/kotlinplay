@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.koin_test"
+    namespace = "com.github.januprasad.canvas_samples"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.koin_test"
+        applicationId = "com.github.januprasad.canvas_samples"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -64,6 +64,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
 }
