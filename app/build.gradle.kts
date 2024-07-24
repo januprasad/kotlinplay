@@ -15,11 +15,19 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        android.buildFeatures.buildConfig = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField(
+            "String",
+            "API_BASE_URL",
+            "\"https://gist.githubusercontent.com/skydoves/176c209dbce4a53c0ff9589e07255f30/raw/6489d9712702e093c4df71500fb822f0d408ef75/\"",
+        )
+        buildConfigField("String", "DATABASE_NAME", "\"app-db\"")
+        buildConfigField("int", "DATABASE_VERSION", "1")
+        buildConfigField("boolean", "DATABASE_EXPORT_SCHEMA", "false")
     }
 
     buildTypes {

@@ -22,6 +22,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
 class CoRoActivity : ComponentActivity() {
+    val version = BuildConfig.DATABASE_VERSION
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        MyHelper.getInstance(this)

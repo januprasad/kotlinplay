@@ -4,4 +4,5 @@
     <string name="title_activity_co_ro_test">CoRoTestActivity</string>
     <string name="title_activity_animation">AnimationActivity</string>
     <string name="title_activity_state_saver">StateSaverActivity</string>
+    <string name="title_activity_co_ro2">CoRo2Activity</string>
 </resources>

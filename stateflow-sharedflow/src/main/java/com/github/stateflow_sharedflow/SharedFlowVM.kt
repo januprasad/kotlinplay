@@ -31,8 +31,8 @@ class SharedFlowVM : ViewModel() {
                         viewModelScope.launch(Dispatchers.IO) {
                             repeat(1000) {
                                 Log.v(tag, "increment on")
-                                delay(1000)
-                                count += 100
+                                delay(100)
+                                count += 1
                                 testInt.emit(count)
                             }
                         }

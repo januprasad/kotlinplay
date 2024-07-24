@@ -39,7 +39,7 @@ class SharedFlowActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
                         TopAppBar(title = {
-                            Text(text = "SampleSharedFlow")
+                            Text(text = "Don't breath")
                         })
                     },
                 ) { innerPadding ->

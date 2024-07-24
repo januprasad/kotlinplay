@@ -15,6 +15,17 @@
         android:theme="@style/Theme.Interviewprep"
         tools:targetApi="31">
         <activity
+            android:name=".CoRo2Activity"
+            android:exported="true"
+            android:label="@string/title_activity_co_ro2"
+            android:theme="@style/Theme.Interviewprep" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".AnimationActivity"
             android:exported="false"
             android:label="@string/title_activity_state_saver"
@@ -37,14 +48,9 @@
         <activity
             android:name=".StateSaverActivity"
             android:exported="true"
-            android:taskAffinity=".StateSaverActivity"
             android:label="@string/app_name"
+            android:taskAffinity=".StateSaverActivity"
             android:theme="@style/Theme.Interviewprep">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
