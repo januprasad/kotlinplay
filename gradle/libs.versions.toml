@@ -38,6 +38,7 @@ navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 junitJunit = "4.12"
 navigationCompose = "2.8.0-beta06"
+lifecycleRuntimeComposeAndroid = "2.8.4"
 
 [libraries]
 androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
@@ -89,6 +90,7 @@ junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version = "2.9.0" }
 retrofit-gson-convertor = { module = "com.squareup.retrofit2:converter-gson", version = "2.9.0" }
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
 
 
 [plugins]

@@ -5,5 +5,5 @@ import com.github.januprasad.hilt_example.model.Quote
 import kotlinx.coroutines.flow.Flow
 
 interface QuoteRepository {
-    suspend fun randomQuote(): Flow<NetworkResult<Quote>>
+    fun randomQuote(): Flow<NetworkResult<Quote>>
 }
