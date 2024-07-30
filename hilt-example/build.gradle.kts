@@ -75,4 +75,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson.convertor)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 }
