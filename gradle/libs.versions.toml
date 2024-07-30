@@ -83,6 +83,8 @@ androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navi
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version = "2.9.0" }
+retrofit-gson-convertor = { module = "com.squareup.retrofit2:converter-gson", version = "2.9.0" }
 
 
 [plugins]
