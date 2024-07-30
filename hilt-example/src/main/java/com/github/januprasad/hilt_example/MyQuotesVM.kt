@@ -25,13 +25,22 @@ class MyQuotesVM
 
         fun events(event: Events) {
             when (event) {
-                Events.RandomQuote -> {
+                is Events.RandomQuote -> {
                     repository
                         .randomQuote()
                         .onEach { result ->
                             when (result) {
                                 is NetworkResult.Loading -> {
-                                    _uiState.update { AppState.UiState(isLoading = true) }
+                                    val pullToRefresh = event.isPullToRefresh
+                                    _uiState.update {
+                                        AppState.UiState(
+                                            loadingType =
+                                                when (pullToRefresh) {
+                                                    true -> LoadingType.PullToRefreshLoading
+                                                    false -> LoadingType.CircularLoading
+                                                },
+                                        )
+                                    }
                                 }
 
                                 is NetworkResult.Error -> {
@@ -39,7 +48,11 @@ class MyQuotesVM
                                 }
 
                                 is NetworkResult.Success -> {
-                                    _uiState.update { AppState.UiState(data = result.data) }
+                                    _uiState.update {
+                                        AppState.UiState(
+                                            data = result.data,
+                                        )
+                                    }
                                 }
                             }
                         }.launchIn(viewModelScope)
@@ -49,13 +62,23 @@ class MyQuotesVM
     }
 
 sealed class Events {
-    object RandomQuote : Events()
+    data class RandomQuote(
+        val isPullToRefresh: Boolean = false,
+    ) : Events()
 }
 
 object AppState {
     data class UiState(
-        val isLoading: Boolean = false,
+        val loadingType: LoadingType = LoadingType.CircularLoading,
         val error: String? = null,
         val data: Quote? = null,
-    )
+    ) {
+        val loaded: Boolean = data != null
+    }
+}
+
+sealed class LoadingType {
+    object CircularLoading : LoadingType()
+
+    object PullToRefreshLoading : LoadingType()
 }
