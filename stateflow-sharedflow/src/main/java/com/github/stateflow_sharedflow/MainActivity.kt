@@ -52,13 +52,15 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-suspend fun ageFirstDigit(): String  {
+suspend fun ageFirstDigit(): String {
+    println("first digit")
     delay(2000)
     return "1"
 }
 
 suspend fun ageSecondDigit(): String =
     try {
+        println("second digit")
         delay(3000)
         "8" // Replace with actual data fetching logic
     } catch (e: Exception) {
@@ -66,7 +68,10 @@ suspend fun ageSecondDigit(): String =
     }
 
 @Composable
-fun MyApp(paddingValues: PaddingValues, viewModel: MainViewModel = viewModel()) {
+fun MyApp(
+    paddingValues: PaddingValues,
+    viewModel: MainViewModel = viewModel(),
+) {
     var state by remember {
         mutableStateOf("")
     }
