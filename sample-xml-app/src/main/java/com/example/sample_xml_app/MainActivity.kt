@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.v("Application", "onStop")
+        finish()
     }
 
     override fun onRestart() {

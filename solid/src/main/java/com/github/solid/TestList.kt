@@ -1,8 +1,7 @@
 package com.github.solid
 
 fun main() {
-    for (i in  0 until 10){
-        println(i)
+    for ((i, i2) in (1..10).withIndex()) {
     }
     println("---")
     for (i in 0..10) {

@@ -7,38 +7,35 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class DBServiceTests {
+    @Test
+    fun `getSchool Info from database`() {
+        val mockSchool = mockk<School>()
+        val mockSDbService = mockk<DBService>()
 
+        every { mockSchool.name } returns "ksbs"
+        every { mockSDbService.getSchoolInfo("Ksbs") } returns mockSchool
 
-  @Test
-  fun `getSchool Info from database`() {
-    val mockSchool = mockk<School>()
-    val mockSDbService = mockk<DBService>()
+        val result = mockSDbService.getSchoolInfo("Ksbs")
 
-    every { mockSchool.name } returns "ksbs"
-    every { mockSDbService.getSchoolInfo("Ksbs") } returns mockSchool
+        // Verify that the expected email details are printed
+        verify(exactly = 1) { mockSDbService.getSchoolInfo("Ksbs") }
 
-    val result = mockSDbService.getSchoolInfo("Ksbs")
+        assertEquals("ksbs", result.name)
+    }
 
-    // Verify that the expected email details are printed
-    verify { mockSDbService.getSchoolInfo("Ksbs") }
+    @Test
+    fun `getVersion Info from database`() {
+        val mockSDbService = mockk<DBService>()
 
-    assertEquals("ksbs", result.name)
+        // when
+        every { mockSDbService.getDBVersion() } returns "1.0"
 
-  }
+        // then
+        val result = mockSDbService.getDBVersion()
 
-  @Test
-  fun `getVersion Info from database`() {
-    val mockSDbService = mockk<DBService>()
+        // Verify that the expected email details are printed
+        verify { mockSDbService.getDBVersion() }
 
-    //when
-    every { mockSDbService.getDBVersion() } returns "1.0"
-
-    //then
-    val result = mockSDbService.getDBVersion()
-
-    // Verify that the expected email details are printed
-    verify { mockSDbService.getDBVersion() }
-
-    assertEquals("1.0", result)
-  }
+        assertEquals("1.0", result)
+    }
 }

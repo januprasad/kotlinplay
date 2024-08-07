@@ -4,9 +4,11 @@ data class Point(
     val x: Int,
     val y: Int,
 ) {
-    operator fun plus(p: Point): Point = Point(x + p.x, y + p.y)
+//    operator fun plus(p: Point): Point = Point(x + p.x, y + p.y)
 
     operator fun minus(a: Int): Int = x - a
+
+    operator fun plus(p: Point): Point = Point(x + p.x, y + p.y)
 }
 
 fun main() {

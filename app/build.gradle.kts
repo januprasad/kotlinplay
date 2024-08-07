@@ -94,4 +94,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose.v282)
     testImplementation(libs.mockk)
     implementation(libs.rxjava)
+    implementation(libs.gson)
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
 }
