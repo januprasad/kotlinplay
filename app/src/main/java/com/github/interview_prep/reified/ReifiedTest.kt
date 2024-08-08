@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.interview_prep.reified
 
 import com.google.gson.Gson
 

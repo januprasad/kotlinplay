@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.interview_prep.runCatching
 
 fun main() {
     repeat(10) {

@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.interview_prep.coroutinescope
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

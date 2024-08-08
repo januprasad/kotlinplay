@@ -1,37 +1,37 @@
-package com.github.interview_prep
+package com.github.interview_prep.asyncexample
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-fun main() = runBlocking {
-    /**
-     * another
-     */
+fun main() =
+    runBlocking {
+        /**
+         * another
+         */
 //    val job = GlobalScope.launch {
 //        println("Throwing exception from coroutine")
 //        throw IllegalArgumentException()
 //    }
 //    job.join()
 //    println("Joined failed job")
-    val deferred = GlobalScope.async {
-        println("Throwing exception from async")
-        throw ArithmeticException()
-        42
-    }
-    try {
-        deferred.await()
-        println("Unreached")
-    } catch (e: ArithmeticException) {
-        println("Caught ArithmeticException")
-    }
-    /**
-     * another
-     */
+        val deferred =
+            GlobalScope.async {
+                println("Throwing exception from async")
+                throw ArithmeticException()
+                42
+            }
+        try {
+            deferred.await()
+            println("Unreached")
+        } catch (e: ArithmeticException) {
+            println("Caught ArithmeticException")
+        }
+        /**
+         * another
+         */
 //    launch {
 //        delay(1000L)
 //        println("Task from runBlocking")
@@ -45,9 +45,9 @@ fun main() = runBlocking {
 //        println("Task from coroutine scope")
 //    }
 //    println("Coroutine scope is over")
-    /**
-     * another
-     */
+        /**
+         * another
+         */
 //    val pJob = launch {
 //        val c = launch {
 //            while (true){
@@ -60,9 +60,9 @@ fun main() = runBlocking {
 //        c.cancel()
 //    }
 //    pJob.join()
-    /**
-     * another
-     */
+        /**
+         * another
+         */
 //    val c = Channel<Int>()
 //    launch {
 //        for (x in 1..5) c.send(x * x)
@@ -73,9 +73,9 @@ fun main() = runBlocking {
 //        println(c.receive())
 //        println("Done")
 //    }
-    /**
-     * another
-     */
+        /**
+         * another
+         */
 //    launch {
 //        for (k in 1..5) {
 //            println("I'm not blocked $k")
@@ -91,9 +91,9 @@ fun main() = runBlocking {
 //    num().collect {
 //        println(it)
 //    }
-    /**
-     * another
-     */
+        /**
+         * another
+         */
 //    coroutineScope {
 //        val def1 = async {
 //            println("reading news from paper")
@@ -108,9 +108,9 @@ fun main() = runBlocking {
 //        def2.await()
 //        println("news & coffe Done")
 //    }
-    /**
-     * another
-     */
+        /**
+         * another
+         */
 //    coroutineScope {
 //        println("drinking coffee")
 //        delay(2000L)
@@ -120,11 +120,12 @@ fun main() = runBlocking {
 //        println("reading news")
 //    }
 //    println("Coroutine scope is over")
-}
-
-fun num() = flow {
-    for (x in 1..5) {
-        delay(1000L)
-        emit(x * 2)
     }
-}
+
+fun num() =
+    flow {
+        for (x in 1..5) {
+            delay(1000L)
+            emit(x * 2)
+        }
+    }

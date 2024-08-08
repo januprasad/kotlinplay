@@ -1,8 +1,6 @@
-package com.github.interview_prep
+package com.github.interview_prep.sealedclasssold
 
-import com.github.interview_prep.Source.*
-
-//sealed class Shape {
+// sealed class Shape {
 //    abstract fun area(): Float
 //    class Circle(val radius: Float) : Shape() {
 //        override fun area(): Float {
@@ -25,65 +23,66 @@ import com.github.interview_prep.Source.*
 //            return base * height
 //        }
 //    }
-//}
+// }
 //
-//fun main() {
+// fun main() {
 //    val area = Shape.Rectangle(4f, 5f)
 //    println(area)
-//}
+// }
 
-class MusicPlayer(private val source: Source) {
+class MusicPlayer(
+    private val source: Source,
+) {
     fun play() {
         source.play()
     }
+
     fun getMetadata() = source.metadata()
 }
 
 sealed interface SourceSpec {
     fun play()
 }
-fun getFileHDDByteArray(source: String): ByteArray {
-    return source.encodeToByteArray().plus(1)
-}
-fun getFileSDCardByteArray(source: String): ByteArray {
-    return source.encodeToByteArray().plus(2)
-}
-fun getFileCDByteArray(source: String): ByteArray {
-    return source.encodeToByteArray().plus(3)
-}
 
-sealed class Source(private val encodedFile: ByteArray) : SourceSpec {
+fun getFileHDDByteArray(source: String): ByteArray = source.encodeToByteArray().plus(1)
 
-     class Laptop(private val source: String) : Source(getFileHDDByteArray(source)) {
+fun getFileSDCardByteArray(source: String): ByteArray = source.encodeToByteArray().plus(2)
+
+fun getFileCDByteArray(source: String): ByteArray = source.encodeToByteArray().plus(3)
+
+sealed class Source(
+    private val encodedFile: ByteArray,
+) : SourceSpec {
+    class Laptop(
+        private val source: String,
+    ) : Source(getFileHDDByteArray(source)) {
         override fun play() {
             println("Playing from Laptop $source")
         }
     }
 
-
-     class CD(private val index: String) : Source(getFileCDByteArray(index)) {
+    class CD(
+        private val index: String,
+    ) : Source(getFileCDByteArray(index)) {
         override fun play() {
             println("Playing from CD $index")
         }
     }
 
-    class Ipod(private val path: String) : Source(getFileSDCardByteArray(path)) {
+    class Ipod(
+        private val path: String,
+    ) : Source(getFileSDCardByteArray(path)) {
         override fun play() {
             println("Playing from Ipod $path")
         }
     }
 
-    fun metadata(): String {
-        return encodedFile.decodeToString()
-    }
-
-
+    fun metadata(): String = encodedFile.decodeToString()
 }
 
-
-
-class Stage(private val player: MusicPlayer) {
-
+class Stage(
+    private val player: MusicPlayer,
+) {
     fun whatisPlayingNow() {
         player.play()
     }
@@ -97,10 +96,11 @@ fun main() {
 //    stage.whatisPlayingNow()
 //    source.metadata()
 
-
-    val source2= Source.CD("3")
-    val stage1 = Stage(
-        player = MusicPlayer(source2))
+    val source2 = Source.CD("3")
+    val stage1 =
+        Stage(
+            player = MusicPlayer(source2),
+        )
 //    stage1.whatisPlayingNow()
     source2.play()
 
@@ -108,5 +108,4 @@ fun main() {
 //        player = MusicPlayer(Laptop("Users/Hackerbooth/music/rock/Track3.mp3"))
 //    )
 //    stage2.whatisPlayingNow()
-
 }

@@ -1,6 +1,5 @@
-package com.github.interview_prep
+package com.github.interview_prep.coroutinescope
 
-import android.accounts.Account
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -18,11 +17,12 @@ class UserAccount {
             count = 2000
             delay(100)
         }
-        val deferred = CoroutineScope(Dispatchers.IO).async {
-            // mimic second api response
-            delay(400)
-            return@async 100
-        }
+        val deferred =
+            CoroutineScope(Dispatchers.IO).async {
+                // mimic second api response
+                delay(400)
+                return@async 100
+            }
         return count + deferred.await()
     }
 
@@ -33,6 +33,8 @@ class UserAccount {
         var deferred1: Deferred<Int>
         var deferred2: Deferred<Int>
 
+        CoroutineScope(Dispatchers.IO).launch {
+        }
         coroutineScope {
 //            launch(Dispatchers.IO) {
 //                delay(100)
@@ -42,34 +44,38 @@ class UserAccount {
                 delay(1000)
                 println("Hello")
             }
-            deferred = async(Dispatchers.IO) {
-                delay(1000)
-                return@async 100
-            }
-            deferred1 = async(Dispatchers.IO) {
-                delay(1000)
-                return@async 100
+            deferred =
+                async(Dispatchers.IO) {
+                    delay(1000)
+                    return@async 100
+                }
+            deferred1 =
+                async(Dispatchers.IO) {
+                    delay(1000)
+                    return@async 100
 //                return@async 10
-            }
-            deferred2 = async(Dispatchers.IO) {
-                delay(1000)
-                return@async 100
+                }
+            deferred2 =
+                async(Dispatchers.IO) {
+                    delay(1000)
+                    return@async 100
 //                return@async 10
-            }
+                }
             launch(Dispatchers.IO) {
                 delay(5000)
                 println("Hello2")
             }
         }
-        val list = listOf(
-            deferred1, deferred2, deferred
-        )
+        val list =
+            listOf(
+                deferred1,
+                deferred2,
+                deferred,
+            )
 //        return deferred.await() + deferred2.await() + deferred1.await()
         return list.awaitAll().sum()
     }
-
 }
-
 
 suspend fun sample() {
     println("hello")
@@ -79,21 +85,24 @@ suspend fun sample() {
     }
 }
 
-suspend fun doWorld() = coroutineScope {  // this: CoroutineScope
-    launch {
-        delay(1000L)
-        println("World!")
-        delay(2000L)
-        println("World2!")
+suspend fun doWorld() =
+    coroutineScope {
+        // this: CoroutineScope
+        launch {
+            delay(1000L)
+            println("World!")
+            delay(2000L)
+            println("World2!")
+        }
+        println("Hello")
     }
-    println("Hello")
 
-}
-
-//fun main() = runBlocking { // this: CoroutineScope
-////    val response = Mobula().getPrice()
-////    val crypto = Mobula().parse(response)
-////    println(crypto.name)
-//    val balance = UserAccount().getBalance1()
-//    println(balance)
-//}
+fun main() =
+    runBlocking {
+        // this: CoroutineScope
+//    val response = Mobula().getPrice()
+//    val crypto = Mobula().parse(response)
+//    println(crypto.name)
+        val balance = UserAccount().getBalance1()
+        println(balance)
+    }

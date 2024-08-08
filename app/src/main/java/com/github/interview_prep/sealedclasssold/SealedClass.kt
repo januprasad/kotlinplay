@@ -1,8 +1,13 @@
-package com.github.interview_prep
+package com.github.interview_prep.sealedclasssold
 
-sealed class Mobile() {
-    data class Android(val withHeadset: Boolean) : Mobile()
-    data class Iphone(val withHeadset: Boolean) : Mobile()
+sealed class Mobile {
+    data class Android(
+        val withHeadset: Boolean,
+    ) : Mobile()
+
+    data class Iphone(
+        val withHeadset: Boolean,
+    ) : Mobile()
 }
 
 fun main() {
@@ -15,7 +20,7 @@ fun main() {
     println("" + userId)
 }
 
-//fun checkMobile(mob: Mobile) {
+// fun checkMobile(mob: Mobile) {
 //    when (mob) {
 //        is Mobile.Iphone if mob.withHeadset -> {
 //            println("iphone with headset")
@@ -25,4 +30,4 @@ fun main() {
 //        }
 //        is Mobile.Android -> println("iphone with android")
 //    }
-//}
+// }

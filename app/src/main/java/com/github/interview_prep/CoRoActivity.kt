@@ -5,12 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
 import com.github.interview_prep.ui.theme.InterviewprepTheme
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -24,6 +23,7 @@ import kotlinx.coroutines.supervisorScope
 class CoRoActivity : ComponentActivity() {
     val version = BuildConfig.DATABASE_VERSION
 
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        MyHelper.getInstance(this)
@@ -36,14 +36,21 @@ class CoRoActivity : ComponentActivity() {
                 val def =
                     async {
                         delay(3000L)
+                        launch {
+                            println("Fourth co")
+                        }
                         throw IllegalArgumentException()
                     }
                 launch {
-                    println(def.join())
+                    def.join()
                 }
                 launch {
                     delay(3000L)
                     println("Second co")
+                }
+                launch {
+                    delay(2000L)
+                    println("Third co")
                 }
             }
         }
@@ -54,32 +61,12 @@ class CoRoActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InterviewprepTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                    )
+                Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+                    TopAppBar(title = { Text(text = "Hello") })
+                }) { innerPadding ->
+                    Text(text = "Hello, Android!")
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier,
-) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    InterviewprepTheme {
-        Greeting("Android")
     }
 }

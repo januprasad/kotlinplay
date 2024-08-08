@@ -1,5 +1,7 @@
 package com.github.interview_prep
 
+import com.github.interview_prep.dbservice.DBService
+import com.github.interview_prep.dbservice.School
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

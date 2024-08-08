@@ -1,9 +1,9 @@
 package com.github.interview_prep
 
+import com.github.interview_prep.dbservice.TestableService
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
-import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
 import io.mockk.spyk
@@ -12,8 +12,7 @@ import org.junit.Before
 import org.junit.Test
 
 class AnnotationMockKUnitTest {
-
-//    @MockK
+    //    @MockK
 //    lateinit var service1: TestableService
 
     @RelaxedMockK
@@ -61,6 +60,7 @@ class AnnotationMockKUnitTest {
         // then
 //        assertEquals("Any Param", secondResult)
     }
+
     @Test
     fun givenRelaxedMock_whenCallingNotMockedMethod_thenReturnDefaultValue() {
         // given
