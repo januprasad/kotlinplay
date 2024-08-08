@@ -72,4 +72,11 @@ class AnnotationMockKUnitTest {
         // then
         assertEquals("", result)
     }
+
+    @Test
+    fun injectableTest_2() {
+        every { objectUnderTest.invokeService1() } returns "Mocked Output"
+        val result = objectUnderTest.invokeService1()
+        assertEquals("Mocked Output", result)
+    }
 }

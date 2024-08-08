@@ -10,4 +10,6 @@ class UserRepository {
         username: String,
         password: String,
     ): LoginResponse = LoginResponse("Success")
+
+    fun getUser(id: String): User? = User("12", "Alice")
 }

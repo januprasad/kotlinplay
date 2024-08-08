@@ -73,6 +73,7 @@ dependencies {
 //    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.constraintlayout.compose)
     testImplementation(libs.junit)
+    testImplementation(project(":mockito"))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

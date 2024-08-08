@@ -35,10 +35,13 @@ class CoRoActivity : ComponentActivity() {
             supervisorScope {
                 val def =
                     async {
-                        delay(3000L)
-                        launch {
-                            println("Fourth co")
-                        }
+                        delay(1000L)
+                        val j =
+                            launch {
+                                delay(2000L)
+                                println("Fourth co")
+                            }
+                        j.join()
                         throw IllegalArgumentException()
                     }
                 launch {
