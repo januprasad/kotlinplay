@@ -44,7 +44,14 @@ class MyForegroundService : Service() {
 
     private fun showForegroundNotification() {
         val notificationIntent = Intent(this, MainActivity::class.java) // Replace with your activity
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent =
+            PendingIntent.getActivity(
+                this,
+                0,
+                notificationIntent,
+                PendingIntent.FLAG_IMMUTABLE or
+                    PendingIntent.FLAG_UPDATE_CURRENT,
+            )
 
         val notification =
             Notification
