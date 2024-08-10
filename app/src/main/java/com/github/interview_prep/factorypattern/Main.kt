@@ -4,7 +4,19 @@ val notation = listOf("pa3", "qc4")
 
 sealed class Piece(
     open val position: String,
-)
+) {
+    companion object {
+        fun fromNotation(piece: String): Piece {
+            val pieceType = piece[0]
+            val position = piece.drop(0)
+            return when (pieceType) {
+                'p' -> Pawn(position)
+                'q' -> Queen(position)
+                else -> error("Unknown piece type")
+            }
+        }
+    }
+}
 
 class Pawn(
     override val position: String,
@@ -14,10 +26,6 @@ class Queen(
     override val position: String,
 ) : Piece(position)
 
-fun generatePieces() =
-    notation.map { piece ->
-        val pieceType = piece[0]
-        val position = piece.substring(1)
-        when (pieceType) {
-        }
-    }
+fun main() {
+    println(Piece.fromNotation("pa3"))
+}
