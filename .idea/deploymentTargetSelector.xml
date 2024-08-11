@@ -4,6 +4,14 @@
     <selectionStates>
       <SelectionState runConfigName="koin-test">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-08-11T07:41:40.784520Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/januprasad/.android/avd/Pixel_3_XL_API_33.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="mockito">
         <option name="selectionMode" value="DROPDOWN" />

@@ -32,6 +32,15 @@ fun main() {
             .maxByOrNull { it.value }
             ?.key,
     )
+    println(listOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "11", "12", "13", "14", "15").maxOfOrNull { it.toInt() })
+    println(
+        "1 2 3 4 5 6 7 8 8 8 9 10 11 12 12 13 14 15"
+            .split(" ")
+            .maxOfOrNull { it.toInt() },
+    )
+    val strings = arrayOf("1", "2", "3")
+    val ints = strings.map { it.toInt() }.toTypedArray()
+
     val repeatedWords =
         words
             .groupingBy { it }
