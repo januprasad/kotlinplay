@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/canvas-samples" />
             <option value="$PROJECT_DIR$/clean-arch" />
             <option value="$PROJECT_DIR$/crypto" />
+            <option value="$PROJECT_DIR$/data-store" />
             <option value="$PROJECT_DIR$/hilt-example" />
             <option value="$PROJECT_DIR$/job-scheduler-example" />
             <option value="$PROJECT_DIR$/koin-test" />
