@@ -4,14 +4,14 @@ class MyClass(
     val name: String,
 ) {
     init {
+        println("Initialization block 2 $name")
+    }
+
+    init {
         println("Initialization block 1 $name")
     }
 
     var age = 30
-
-    init {
-        println("Initialization block 2 $name")
-    }
 
     constructor(name: String, age: Int) : this(name) {
         println("Secondary constructor")

@@ -5,17 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.koin_test.ui.theme.InterviewprepTheme
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -29,6 +26,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val viewModel: SettingsViewModel = getViewModel()
+            val postsViewModel: PostsViewModel = getViewModel()
             InterviewprepTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -36,11 +34,8 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(title = { Text(text = "SampleApp") })
                     },
                 ) { innerPadding ->
-//                    myService.doSomething()
-//                    val data = myRepository.getData()
-//                    WholeApp(innerPadding)
                     Column(Modifier.padding(innerPadding)) {
-                        SettingsScreen(
+                       /* SettingsScreen(
                             viewModel.nickname.value,
                             {
                                 viewModel.nickname.value = it
@@ -54,19 +49,15 @@ class MainActivity : ComponentActivity() {
                                 viewModel.throttle.value = it
                             },
                             viewModel::save,
-                        )
+                        )*/
+                       /* LaunchedEffect(key1 = true) {
+                            postsViewModel.getPosts()
+                        }*/
+                        val appState = postsViewModel.uiState.collectAsStateWithLifecycle()
+                        PostScreen(appState.value)
                     }
                 }
             }
         }
     }
-}
-
-@Composable
-fun WholeApp(innerPadding: PaddingValues) {
-    Text(
-        text = "Hello!",
-        color = Color.Red,
-        style = MaterialTheme.typography.headlineLarge,
-    )
 }
