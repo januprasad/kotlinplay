@@ -13,7 +13,7 @@ class CoinSetupApp : Application() {
             androidLogger()
             androidContext(this@CoinSetupApp)
 //            modules(appModule)
-            modules(koinAppModule(applicationContext))
+            modules(koinAppModule())
         }
     }
 }

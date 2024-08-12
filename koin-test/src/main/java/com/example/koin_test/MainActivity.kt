@@ -12,7 +12,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.koin_test.ui.theme.InterviewprepTheme
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -35,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     },
                 ) { innerPadding ->
                     Column(Modifier.padding(innerPadding)) {
-                       /* SettingsScreen(
+                        SettingsScreen(
                             viewModel.nickname.value,
                             {
                                 viewModel.nickname.value = it
@@ -49,12 +48,12 @@ class MainActivity : ComponentActivity() {
                                 viewModel.throttle.value = it
                             },
                             viewModel::save,
-                        )*/
+                        )
                        /* LaunchedEffect(key1 = true) {
                             postsViewModel.getPosts()
                         }*/
-                        val appState = postsViewModel.uiState.collectAsStateWithLifecycle()
-                        PostScreen(appState.value)
+//                        val appState = postsViewModel.uiState.collectAsStateWithLifecycle()
+//                        PostScreen(appState.value)
                     }
                 }
             }
