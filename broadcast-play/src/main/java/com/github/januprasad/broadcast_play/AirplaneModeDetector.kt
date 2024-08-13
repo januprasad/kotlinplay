@@ -1,11 +1,11 @@
-package com.github.interview_prep.broadcastreciever
+package com.github.januprasad.broadcast_play
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
-class AirplaneMOdeDetector : BroadcastReceiver() {
+class AirplaneModeDetector : BroadcastReceiver() {
     override fun onReceive(
         context: Context,
         intent: Intent,

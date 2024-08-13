@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.github.januprasad.data_store"
+    namespace = "com.github.januprasad.broadcast_play"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.github.januprasad.data_store"
+        applicationId = "com.github.januprasad.broadcast_play"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -57,8 +57,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.datastore.core.android)
-    implementation(libs.androidx.datastore.preferences.core.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,5 +64,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.localbroadcastmanager)
 }

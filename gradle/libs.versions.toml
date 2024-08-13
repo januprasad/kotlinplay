@@ -3,6 +3,7 @@ agp = "8.4.2"
 constraintlayoutCompose = "1.0.1"
 core = "1.6.0"
 coreTesting = "2.2.0"
+datastorePreferences = "1.1.1"
 koinCore = "3.5.6"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
@@ -19,6 +20,7 @@ ktor = "2.3.10"
 jetbrainsKotlinJvm = "2.0.0"
 lifecycleViewmodelCompose = "2.8.2"
 lifecycleViewmodelComposeVersion = "2.8.4"
+localbroadcastmanager = "1.0.0"
 loggingInterceptor = "4.12.0"
 materialVersion = "1.6.8"
 mockitoCore = "5.7.0"
@@ -49,9 +51,11 @@ datastorePreferencesCoreJvm = "1.1.1"
 androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-compose-v282 = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-lifecycle-viewmodel-compose-v284 = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelComposeVersion" }
+androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workRuntime" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinCore" }
