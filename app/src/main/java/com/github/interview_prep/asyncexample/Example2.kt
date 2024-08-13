@@ -11,12 +11,6 @@ fun main() =
         /**
          * another
          */
-//    val job = GlobalScope.launch {
-//        println("Throwing exception from coroutine")
-//        throw IllegalArgumentException()
-//    }
-//    job.join()
-//    println("Joined failed job")
         val deferred =
             GlobalScope.async {
                 println("Throwing exception from async")
