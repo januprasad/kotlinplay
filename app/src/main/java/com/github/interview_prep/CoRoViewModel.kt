@@ -1,6 +1,8 @@
 package com.github.interview_prep
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,6 +17,9 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 class CoRoViewModel : ViewModel() {
+    private val _state = MutableLiveData(0)
+    val state: LiveData<Int> = _state
+
     fun test() {
         val coroutineExceptionHandler =
             CoroutineExceptionHandler { _, exception ->
@@ -70,6 +75,13 @@ class CoRoViewModel : ViewModel() {
         }
     }
 
+    fun updateState() {
+        viewModelScope.launch {
+            val result = asyncModeTest()
+            _state.postValue(result)
+        }
+    }
+
     private fun launchCoroScope() {
         viewModelScope.launch {
             try {
@@ -102,8 +114,8 @@ class CoRoViewModel : ViewModel() {
     }
 }
 
-private suspend fun asyncMode1() {
-    withContext(Dispatchers.IO) {
+private suspend fun asyncMode1(): Int {
+    return withContext(Dispatchers.IO) {
         Log.v("Log", "imagine db operations")
         val result =
             async {
@@ -124,8 +136,8 @@ private suspend fun asyncMode1() {
     }
 }
 
-private suspend fun asyncMode() {
-    withContext(Dispatchers.IO) {
+private suspend fun asyncMode(): Int {
+    return withContext(Dispatchers.IO) {
         Log.v("Log", "imagine db operations")
         val result =
             async {
@@ -142,6 +154,25 @@ private suspend fun asyncMode() {
             }
         val resultString = result.await() + result1.await()
         Log.v("Log", resultString.toString())
+        resultString
+    }
+}
+
+private suspend fun asyncModeTest(): Int {
+    return withContext(Dispatchers.IO) {
+        val one =
+            async {
+                // imagine db operations
+                delay(100)
+                return@async 1
+            }
+        val two =
+            async {
+                // image heavy calculation
+                delay(100)
+                return@async 2
+            }
+        one.await() + two.await()
     }
 }
 

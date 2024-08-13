@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     testImplementation(project(":mockito"))
     androidTestImplementation(libs.androidx.junit)
