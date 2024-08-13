@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Interviewprep"
         tools:targetApi="31">
-
+        <activity
+            android:name=".BroadCastRecieverTestActivity"
+            android:exported="false" />
         <activity
             android:name=".AnimationActivity"
             android:exported="false"
@@ -34,7 +36,7 @@
             android:name=".CoRoActivity"
             android:exported="true"
             android:label="@string/title_activity_co_ro"
-            android:theme="@style/Theme.Interviewprep" >
+            android:theme="@style/Theme.Interviewprep">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,8 +48,7 @@
             android:exported="true"
             android:label="@string/app_name"
             android:taskAffinity=".StateSaverActivity"
-            android:theme="@style/Theme.Interviewprep">
-        </activity>
+            android:theme="@style/Theme.Interviewprep"></activity>
     </application>
 
 </manifest>

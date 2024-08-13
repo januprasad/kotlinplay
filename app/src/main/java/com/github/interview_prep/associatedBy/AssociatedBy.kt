@@ -23,7 +23,9 @@ fun main() {
     val peopleByAge = people.associateBy { it.age }
     println(peopleByAge.size) // Output: {25=[Alice, Charlie], 30=[Bob]}
 
-    val words = listOf("apple", "banana", "apple", "orange")
+    val words = listOf("apple", "banana", "banana", "apple", "orange", "orange", "banana")
+    println("most repeated word " + words.groupingBy { it }.eachCount().maxByOrNull { it.value })
+
     println(
         "1 2 3 4 5 6 7 8 8 8 9 10 11 12 12 13 14 15"
             .split(" ")
