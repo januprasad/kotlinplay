@@ -7,4 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".BroadCastRecieverTestActivity">
 
+    <Button
+        android:id="@+id/trigger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

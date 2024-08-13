@@ -100,5 +100,5 @@ dependencies {
     testImplementation(libs.mockk)
     implementation(libs.rxjava)
     implementation(libs.gson)
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation(libs.androidx.core.testing)
 }
