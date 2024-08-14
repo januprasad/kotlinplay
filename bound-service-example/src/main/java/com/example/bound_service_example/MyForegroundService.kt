@@ -69,7 +69,7 @@ class MyForegroundService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         // Cleanup tasks for the service
-        stopForeground(true) // Remove notification when service stops
+        stopForeground(STOP_FOREGROUND_DETACH)
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

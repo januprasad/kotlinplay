@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
         if (isBound) {
             unbindService(boundServiceConnection);
             isBound = false;
-
-
         }
     }
 

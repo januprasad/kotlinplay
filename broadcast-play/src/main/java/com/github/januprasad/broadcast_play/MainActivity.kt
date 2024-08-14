@@ -98,8 +98,6 @@ class MainActivity :
         IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
             registerReceiver(airplaneModeDetector, it)
         }
-
-        myLocalBroadcastReceiver = MyLocalBroadcastReceiver()
     }
 
     override fun onRestart() {
