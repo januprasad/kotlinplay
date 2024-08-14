@@ -1,4 +1,4 @@
-package com.github.interview_prep.valvardiff
+package com.github.interview_prep.valconstdiff
 
 data class Dummy(
     val name: String,
