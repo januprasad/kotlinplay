@@ -7,6 +7,14 @@ data class Person(
     override fun compareTo(other: Person): Int = name.compareTo(other.name)
 }
 
+/**
+ * Defines a natural ordering for objects of a class.
+ * A class implements the Comparable interface to provide a comparison logic for its instances.
+ * The compareTo method is used to compare two objects.
+ * Provides a single sorting sequence
+ *call in sorted method, so it will trigger
+ */
+
 fun main() {
     val person =
         listOf(

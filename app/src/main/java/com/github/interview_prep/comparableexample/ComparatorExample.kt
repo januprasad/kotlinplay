@@ -22,4 +22,11 @@ fun main() {
     println(sortedName)
     println(sortedPeople)
     println(sortedPeopleNameAge)
+
+    /**
+     * Provides a custom comparison logic for objects.
+     * Not tied to the class itself.
+     * The compare method is used to compare two objects.
+     * Allows multiple sorting sequences.
+     */
 }

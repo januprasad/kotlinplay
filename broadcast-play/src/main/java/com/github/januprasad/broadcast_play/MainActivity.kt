@@ -71,17 +71,37 @@ class MainActivity :
     }
 
     private fun sendBroadcast() {
-        localBroadcastManager = LocalBroadcastManager.getInstance(this)
+        /**
+         * step 1 init local broadcast receiver class as usual
+         */
         myLocalBroadcastReceiver = MyLocalBroadcastReceiver()
+        /**
+         step 2
+         init LocalBroadcastManager
+         */
+        localBroadcastManager = LocalBroadcastManager.getInstance(this)
+        /**
+         * step 3
+         * register with localBroadcastManager this is diff than usual scenario.
+         */
         localBroadcastManager.registerReceiver(
             myLocalBroadcastReceiver,
             IntentFilter("PlayGame"),
         )
         // here we are creating our own action intent
+
+        /**
+         * step 4 create intent filter fo specifically handling
+         */
         val localIntent =
-            Intent("PlayGame")
+            Intent(Filters.PlayGame.name)
                 // adding data to the intent
                 .putExtra("data", "PUBG")
+
+        /**
+         *  step 5 broadcast the intent
+         */
+
         // sending our own broadcast
         localBroadcastManager.sendBroadcast(localIntent)
     }
@@ -103,7 +123,7 @@ class MainActivity :
         super.onPause()
         Log.v("App", "Sadhanam paused")
         unregisterReceiver(airplaneModeDetector)
-        unregisterReceiver(myLocalBroadcastReceiver)
+        localBroadcastManager.unregisterReceiver(myLocalBroadcastReceiver)
     }
 
     override fun onDestroy() {
@@ -153,4 +173,8 @@ fun Greeting(
     Button(onClick = { /*TODO*/ }) {
         Text("Local Broadcast Notification")
     }
+}
+
+enum class Filters {
+    PlayGame,
 }

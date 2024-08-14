@@ -11,7 +11,7 @@ class MyLocalBroadcastReceiver : BroadcastReceiver() {
         intent: Intent,
     ) {
         when (intent.action) {
-            "PlayGame" -> {
+            Filters.PlayGame.name -> {
                 val result = intent.getStringExtra("data")
                 Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show()
             }

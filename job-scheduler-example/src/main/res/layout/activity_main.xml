@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonCalc"
+        android:id="@+id/buttonScheduleJob"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_calc"

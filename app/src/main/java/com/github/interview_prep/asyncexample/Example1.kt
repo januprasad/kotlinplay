@@ -8,12 +8,14 @@ fun main() =
     runBlocking {
         val result =
             async {
-                delay(1000)
+                println("im working")
+                delay(5000)
                 return@async 100
             }
         val result1 =
             async {
-                delay(2000)
+                println("im also working")
+                delay(1000)
                 return@async 100
             }
         println(result.await() + result1.await())
