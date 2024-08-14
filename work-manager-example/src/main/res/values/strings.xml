@@ -11,4 +11,20 @@
     <string name="provide_sample_image_downloader">Image downloader</string>
     <string name="failed_to_upload_due_to_user_cancelled">Upload Cancelled</string>
     <string name="failed_to_update_event_due_to_user_cancelled">Event update Cancelled</string>
+
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">PhotoPicker</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="launch_picker">Open</string>
+    <string name="previous">Previous</string>
+
+    <string name="pick_image">Select Images</string>
+    <string name="pick_video">Select Videos</string>
+    <string name="pick_multimedia">Select Multimedia</string>
+    <string name="pick_gif">Select Gifs</string>
+
+    <string name="lorem_ipsum">
+        Demo for Permissionless Photopicker for android 13. Kindly have media/ images/ gif available on your device to test this
+    </string>
 </resources>

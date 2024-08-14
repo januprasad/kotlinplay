@@ -72,4 +72,5 @@ dependencies {
     // deps
     implementation(libs.androidx.work.runtime)
     implementation(libs.okhttp)
+    implementation(libs.androidx.fragment.ktx)
 }
