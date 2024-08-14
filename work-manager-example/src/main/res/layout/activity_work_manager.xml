@@ -52,5 +52,13 @@
         android:text="@string/provide_sample_event_update_relaunch"
         app:layout_constraintTop_toBottomOf="@+id/buttonWorkerSampleEventUpdate"
         tools:layout_editor_absoluteX="10dp" />
+    <Button
+        android:id="@+id/buttonWorkerSampleImageDownloader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/provide_sample_image_downloader"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWorkerSampleEventCancelAndRestart"
+        tools:layout_editor_absoluteX="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
