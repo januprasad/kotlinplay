@@ -3,19 +3,20 @@ package com.github.interview_prep.scope
 class Sample(
     private var s: String,
 ) {
-    init {
-
-        // step 0:  s = t
-        // step 1:  s + b
-        s = s + "B"
-    }
-
     fun print() {
         println(s)
     }
     constructor(t: String, u: String) : this(t) {
+        println("two")
         this.s += u
         // step 3:  s + u
+    }
+
+    init {
+        println("one")
+        // step 0:  s = t
+        // step 1:  s + b
+        s = s + "B"
     }
 }
 

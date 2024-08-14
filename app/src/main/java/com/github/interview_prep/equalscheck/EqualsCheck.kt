@@ -6,4 +6,5 @@ fun main() {
     val a = MyClass("a", 22)
     val b = MyClass("a", 33)
     println(a == b) // prints: true
+    println(a === b) // prints: true
 }

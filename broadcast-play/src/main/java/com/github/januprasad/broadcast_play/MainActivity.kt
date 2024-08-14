@@ -1,8 +1,10 @@
 package com.github.januprasad.broadcast_play
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,7 +22,8 @@ import com.github.januprasad.broadcast_play.ui.theme.InterviewprepTheme
 
 class MainActivity :
     ComponentActivity(),
-    ConnectivityListener {
+    ConnectivityListener,
+    AirplanListener {
     lateinit var airplaneModeDetector: AirplaneModeDetector
     lateinit var myLocalBroadcastReceiver: MyLocalBroadcastReceiver
     lateinit var localBroadcastManager: LocalBroadcastManager
@@ -50,6 +53,23 @@ class MainActivity :
         }
     }
 
+    private fun simpleAlertDialog() {
+        // Create the AlertDialog builder
+        val builder =
+            AlertDialog
+                .Builder(this)
+                .setTitle("Alert")
+                .setMessage("Airplane mode enabled!!")
+                .setPositiveButton("OK") { dialog, which ->
+                    // Handle positive button click
+                    dialog.dismiss()
+                }
+
+        // Create the AlertDialog
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
     private fun sendBroadcast() {
         localBroadcastManager = LocalBroadcastManager.getInstance(this)
         myLocalBroadcastReceiver = MyLocalBroadcastReceiver()
@@ -76,38 +96,47 @@ class MainActivity :
 
     override fun onStart() {
         super.onStart()
-        println("Sadhanam started")
+        Log.v("App", "Sadhanam started")
     }
 
     override fun onPause() {
         super.onPause()
-        println("Sadhanam paused")
+        Log.v("App", "Sadhanam paused")
         unregisterReceiver(airplaneModeDetector)
         unregisterReceiver(myLocalBroadcastReceiver)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        println("Sadhanam destroyed")
+        Log.v("App", "Sadhanam destroyed")
     }
 
     override fun onResume() {
         super.onResume()
-        println("Sadhanam resumed")
-        airplaneModeDetector = AirplaneModeDetector()
-        IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
-            registerReceiver(airplaneModeDetector, it)
-        }
+        Log.v("App", "Sadhanam resumed")
+        airplaneModeDetector = AirplaneModeDetector(this)
+        val filter = IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        registerReceiver(airplaneModeDetector, filter)
+
+        /**
+         * IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
+         *  registerReceiver(airplaneModeDetector, filter)
+         * }
+         */
     }
 
     override fun onRestart() {
         super.onRestart()
-        println("Sadhanam restart")
+        Log.v("App", "Sadhanam restart")
     }
 
     override fun onStop() {
         super.onStop()
-        println("Sadhanam stopped")
+        Log.v("App", "Sadhanam stopped")
+    }
+
+    override fun airplaneMode() {
+        simpleAlertDialog()
     }
 }
 

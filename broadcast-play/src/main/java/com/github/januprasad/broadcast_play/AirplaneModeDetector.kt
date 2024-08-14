@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
-class AirplaneModeDetector : BroadcastReceiver() {
+class AirplaneModeDetector(
+    val listener: AirplanListener,
+) : BroadcastReceiver() {
     override fun onReceive(
         context: Context,
         intent: Intent,
@@ -17,6 +19,7 @@ class AirplaneModeDetector : BroadcastReceiver() {
             )
 
         if (airplaneMOdeEnabled) {
+            listener.airplaneMode()
             makeToast(context, "Airplane mode enabled!!")
         } else {
             makeToast(context, "Airplane mode disabled!!")
