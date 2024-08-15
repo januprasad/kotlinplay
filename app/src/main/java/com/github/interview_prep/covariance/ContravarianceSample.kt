@@ -1,5 +1,11 @@
 package com.github.interview_prep.covariance
 
+/**
+Subtyping is reversed.
+A supertype of a generic type can be used where the generic type is expected.
+Keyword: in
+Typically used for input positions (function parameters).
+ */
 interface AnimalCare<in T> {
     fun takeCareOf(animal: T)
 }

@@ -7,8 +7,17 @@ fun main() {
     val num: UInt = 232u
     println(num)
     println(Utils.logger)
+    val executer =
+        object : Executer {
+            override fun exec(): String = "Executed"
+        }
+    println(executer.exec())
 }
 
 object Utils {
     val logger = "logger"
+}
+
+interface Executer {
+    fun exec(): String
 }
