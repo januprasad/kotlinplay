@@ -7,4 +7,5 @@ fun main() {
     val b = MyClass("a", 33)
     println(a == b) // prints: true
     println(a === b) // prints: true
+    println(a === a) // prints: true
 }
