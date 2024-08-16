@@ -18,6 +18,7 @@ class WorkManagerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWorkManagerBinding
     private lateinit var logUploadManager: LogUploadManager
     private lateinit var eventUpdateManager: EventUpdateManager
+    private lateinit var periodicDBUploadManager: PeriodicDBUploadManager
 
     val REQUEST_EXTERNAL_STORAGE = 1000
     private val requestPermissionLauncher =
@@ -46,6 +47,7 @@ class WorkManagerActivity : AppCompatActivity() {
         setContentView(binding.root)
         logUploadManager = LogUploadManager(this)
         eventUpdateManager = EventUpdateManager(this)
+        periodicDBUploadManager = PeriodicDBUploadManager(this)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -67,6 +69,9 @@ class WorkManagerActivity : AppCompatActivity() {
         binding.buttonWorkerSampleEventCancelAndRestart.setOnClickListener {
             eventUpdateManager.exec()
             eventUpdateManager.cancelAndRestart()
+        }
+        binding.buttonWorkerPeriodic.setOnClickListener {
+            periodicDBUploadManager.exec()
         }
 
         binding.buttonWorkerSampleImageDownloader.setOnClickListener {

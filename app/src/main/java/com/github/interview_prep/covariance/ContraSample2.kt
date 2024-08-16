@@ -4,6 +4,12 @@ interface Consumer<in T> {
     fun consume(t: T)
 }
 
+/**
+ * List<out T> in Kotlin is equivalent to List<? extends T> in Java.
+ *
+ * List<in T> in Kotlin is equivalent to List<? super T> in Java
+ */
+
 class AnimalConsumer : Consumer<Animal> {
     override fun consume(animal: Animal) {
         println("Consuming animal: $animal")

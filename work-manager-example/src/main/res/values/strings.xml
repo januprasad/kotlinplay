@@ -27,4 +27,5 @@
     <string name="lorem_ipsum">
         Demo for Permissionless Photopicker for android 13. Kindly have media/ images/ gif available on your device to test this
     </string>
+    <string name="periodic_task">Periodic Task</string>
 </resources>
