@@ -2,10 +2,10 @@ package com.example.work_manager_example
 
 import android.content.Context
 import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
-import androidx.work.WorkRequest
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import java.util.concurrent.TimeUnit
@@ -13,12 +13,14 @@ import java.util.concurrent.TimeUnit
 class PeriodicDBUploadManager(
     private val context: Context,
 ) : WorkerContract {
-    private lateinit var workReq: WorkRequest
-
     override fun exec() {
-        workReq = startPeriodicWork()
+        val workReq = startPeriodicWork()
         WorkManager.getInstance(context).apply {
-            enqueue(workReq)
+            enqueueUniquePeriodicWork(
+                "jobTag",
+                ExistingPeriodicWorkPolicy.KEEP,
+                workReq,
+            )
         }
     }
 }
@@ -36,6 +38,14 @@ class PeriodicDBUploadWorker(
 }
 
 fun startPeriodicWork(): PeriodicWorkRequest {
+    val periodicWorkRequest1: PeriodicWorkRequest =
+        PeriodicWorkRequest
+            .Builder(
+                PeriodicDBUploadWorker::class.java,
+                15,
+                TimeUnit.MINUTES,
+            ).build()
+
     val constraints =
         Constraints
             .Builder()
@@ -44,9 +54,12 @@ fun startPeriodicWork(): PeriodicWorkRequest {
 
     val periodicWorkRequest =
         PeriodicWorkRequestBuilder<PeriodicDBUploadWorker>(
-            20,
-            TimeUnit.SECONDS,
+            15,
+            TimeUnit.MINUTES,
+            8,
+            TimeUnit.MINUTES,
         ).setConstraints(constraints)
             .build()
-    return periodicWorkRequest
+//    return periodicWorkRequest
+    return periodicWorkRequest1
 }
