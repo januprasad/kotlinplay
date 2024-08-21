@@ -35,7 +35,7 @@ public class LocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         locationBinding = ActivityLocationBinding.inflate(getLayoutInflater());
-		setContentView(locationBinding.getRoot());
+        setContentView(locationBinding.getRoot());
         if (!checkLocationPermission()) {
             ActivityCompat.requestPermissions(this,
                     new String[]{ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION},
