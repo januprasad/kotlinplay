@@ -14,10 +14,11 @@ class PeriodicDBUploadManager(
     private val context: Context,
 ) : WorkerContract {
     override fun exec() {
+        val jobTag = "jobTag"
         val workReq = startPeriodicWork()
         WorkManager.getInstance(context).apply {
             enqueueUniquePeriodicWork(
-                "jobTag",
+                jobTag,
                 ExistingPeriodicWorkPolicy.KEEP,
                 workReq,
             )

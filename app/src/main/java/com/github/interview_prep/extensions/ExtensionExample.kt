@@ -2,6 +2,9 @@ package com.github.interview_prep.extensions
 
 import java.time.LocalDate
 
+/**
+ * destructuring example
+ */
 fun main() {
     val today = LocalDate.parse("2024-08-11")
     val (date, month, year) = today

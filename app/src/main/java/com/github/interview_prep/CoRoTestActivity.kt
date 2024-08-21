@@ -1,6 +1,9 @@
 package com.github.interview_prep
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.interview_prep.ui.theme.InterviewprepTheme
 
-class CoRoTestActivity : ComponentActivity() {
+class CoRoTestActivity :
+    ComponentActivity(),
+    AnalyticalService by AnalyticalServiceImpl() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,8 @@ class CoRoTestActivity : ComponentActivity() {
                 }
             }
         }
+        setup(this)
+        event("On create")
     }
 }
 
@@ -57,5 +64,33 @@ fun AppScreen(
         Button(onClick = { viewModel.updateState() }) {
             Text(text = "Click me")
         }
+    }
+}
+
+interface AnalyticalService {
+    fun event(event: String)
+
+    fun setup(context: Context)
+}
+
+class AnalyticalServiceImpl : AnalyticalService {
+    lateinit var context: Context
+
+    override fun event(event: String) {
+        Toast.makeText(context, "$event occurred", Toast.LENGTH_LONG).show()
+    }
+
+    override fun setup(context: Context) {
+        this.context = context
+    }
+}
+
+interface SampleService {
+    fun test()
+}
+
+class SampleServiceImpl : SampleService {
+    override fun test() {
+        Log.v("App", "testing SampleService")
     }
 }
