@@ -1,4 +1,4 @@
-package com.example.work_manager_example.experiment.extension
+package com.example.work_manager_example.notification.extension
 
 import android.content.Context
 import android.graphics.Bitmap

@@ -1,4 +1,4 @@
-package com.example.work_manager_example.experiment.work
+package com.example.work_manager_example.notification.work
 
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
@@ -27,8 +27,8 @@ import androidx.work.ListenableWorker.Result.success
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.example.work_manager_example.R
-import com.example.work_manager_example.experiment.HomeActivity
-import com.example.work_manager_example.experiment.extension.vectorToBitmap
+import com.example.work_manager_example.notification.HomeActivity
+import com.example.work_manager_example.notification.extension.vectorToBitmap
 
 class NotifyWork(
     context: Context,

@@ -1,4 +1,4 @@
-package com.example.work_manager_example.experiment
+package com.example.work_manager_example.notification
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -15,9 +15,9 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.example.work_manager_example.R
 import com.example.work_manager_example.databinding.ActivityHomeBinding
-import com.example.work_manager_example.experiment.work.NotifyWork
-import com.example.work_manager_example.experiment.work.NotifyWork.Companion.NOTIFICATION_ID
-import com.example.work_manager_example.experiment.work.NotifyWork.Companion.NOTIFICATION_WORK
+import com.example.work_manager_example.notification.work.NotifyWork
+import com.example.work_manager_example.notification.work.NotifyWork.Companion.NOTIFICATION_ID
+import com.example.work_manager_example.notification.work.NotifyWork.Companion.NOTIFICATION_WORK
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar.make
 import java.lang.System.currentTimeMillis

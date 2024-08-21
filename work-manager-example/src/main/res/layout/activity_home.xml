@@ -82,7 +82,7 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="0dp" />
 
-            <com.example.work_manager_example.experiment.custom.TimePickerCustom
+            <com.example.work_manager_example.notification.custom.TimePickerCustom
                 android:id="@+id/timePicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
