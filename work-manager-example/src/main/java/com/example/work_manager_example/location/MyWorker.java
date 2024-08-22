@@ -77,7 +77,12 @@ public class MyWorker extends Worker {
 		Log.d(TAG, "doWork: Done");
 
 		Log.d(TAG, "onStartJob: STARTING JOB..");
+//		getFusedLocation();
+		return Result.success();
+	}
 
+
+	private void getFusedLocation() {
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
 		Calendar c = Calendar.getInstance();
@@ -107,41 +112,41 @@ public class MyWorker extends Worker {
 					mFusedLocationClient
 							.getLastLocation()
 							.addOnCompleteListener(task -> {
-                                if (task.isSuccessful() && task.getResult() != null) {
-                                    mLocation = task.getResult();
-                                    Log.d(TAG, "Location : " + mLocation);
+								if (task.isSuccessful() && task.getResult() != null) {
+									mLocation = task.getResult();
+									Log.d(TAG, "Location : " + mLocation);
 
-                                    // Create the NotificationChannel, but only on API 26+ because
-                                    // the NotificationChannel class is new and not in the support library
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                        CharSequence name = mContext.getString(R.string.app_name);
-                                        String description = mContext.getString(R.string.app_name);
-                                        int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                                        NotificationChannel channel = new NotificationChannel(mContext.getString(R.string.app_name), name, importance);
-                                        channel.setDescription(description);
-                                        // Register the channel with the system; you can't change the importance
-                                        // or other notification behaviors after this
-                                        NotificationManager notificationManager = mContext.getSystemService(NotificationManager.class);
-                                        notificationManager.createNotificationChannel(channel);
-                                    }
+									// Create the NotificationChannel, but only on API 26+ because
+									// the NotificationChannel class is new and not in the support library
+									if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+										CharSequence name = mContext.getString(R.string.app_name);
+										String description = mContext.getString(R.string.app_name);
+										int importance = NotificationManager.IMPORTANCE_DEFAULT;
+										NotificationChannel channel = new NotificationChannel(mContext.getString(R.string.app_name), name, importance);
+										channel.setDescription(description);
+										// Register the channel with the system; you can't change the importance
+										// or other notification behaviors after this
+										NotificationManager notificationManager = mContext.getSystemService(NotificationManager.class);
+										notificationManager.createNotificationChannel(channel);
+									}
 
-                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, mContext.getString(R.string.app_name))
-                                            .setSmallIcon(android.R.drawable.ic_menu_mylocation)
-                                            .setContentTitle("New Location Update")
-                                            .setContentText("You are at " + getCompleteAddressString(mLocation.getLatitude(), mLocation.getLongitude()))
-                                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                            .setStyle(new NotificationCompat.BigTextStyle().bigText("You are at " + getCompleteAddressString(mLocation.getLatitude(), mLocation.getLongitude())));
+									NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, mContext.getString(R.string.app_name))
+											.setSmallIcon(android.R.drawable.ic_menu_mylocation)
+											.setContentTitle("New Location Update")
+											.setContentText("You are at " + getCompleteAddressString(mLocation.getLatitude(), mLocation.getLongitude()))
+											.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+											.setStyle(new NotificationCompat.BigTextStyle().bigText("You are at " + getCompleteAddressString(mLocation.getLatitude(), mLocation.getLongitude())));
 
-                                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mContext);
+									NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mContext);
 
-                                    // notificationId is a unique int for each notification that you must define
-                                    notificationManager.notify(1001, builder.build());
+									// notificationId is a unique int for each notification that you must define
+									notificationManager.notify(1001, builder.build());
 
-                                    mFusedLocationClient.removeLocationUpdates(mLocationCallback);
-                                } else {
-                                    Log.w(TAG, "Failed to get location.");
-                                }
-                            });
+									mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+								} else {
+									Log.w(TAG, "Failed to get location.");
+								}
+							});
 				} catch (SecurityException unlikely) {
 					Log.e(TAG, "Lost location permission." + unlikely);
 				}
@@ -158,8 +163,6 @@ public class MyWorker extends Worker {
 		} catch (ParseException ignored) {
 
 		}
-
-		return Result.success();
 	}
 
 	private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {

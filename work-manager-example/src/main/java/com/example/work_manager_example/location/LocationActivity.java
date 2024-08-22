@@ -59,10 +59,21 @@ public class LocationActivity extends AppCompatActivity {
         locationBinding.appCompatButtonStart.setOnClickListener(v -> {
             if (locationBinding.appCompatButtonStart.getText().toString().equalsIgnoreCase(getString(R.string.button_text_start))) {
                 // START Worker
-                PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(MyWorker.class, 15, TimeUnit.MINUTES)
+//                PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(MyWorker.class,
+//                        15, TimeUnit.MINUTES)
+//                        .addTag(TAG)
+//                        .build();
+//                WorkManager.getInstance(this).enqueueUniquePeriodicWork("Location",
+//                        ExistingPeriodicWorkPolicy.UPDATE, periodicWork);
+
+
+                PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(LocationWorker.class,
+                        15, TimeUnit.MINUTES)
                         .addTag(TAG)
                         .build();
-                WorkManager.getInstance(this).enqueueUniquePeriodicWork("Location", ExistingPeriodicWorkPolicy.REPLACE, periodicWork);
+                WorkManager.getInstance(this).enqueueUniquePeriodicWork("Location",
+                        ExistingPeriodicWorkPolicy.UPDATE, periodicWork);
+
 
                 Toast.makeText(LocationActivity.this, "Location Worker Started : " + periodicWork.getId(), Toast.LENGTH_SHORT).show();
 
