@@ -131,7 +131,7 @@ class LocationWorker(
         }
         notificationManager.notify(1001, builder.build())
 
-//        mFusedLocationClient.removeLocationUpdates(mLocationCallback)
+        fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
     private fun getCompleteAddressString(
