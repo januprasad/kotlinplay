@@ -7,12 +7,12 @@ fun main() {
     }
 
     val a = { i: Int -> i + 1 }
-//    println(shortened.invoke(3))
-//    println(sum.invoke(3, 3))
-//    println(intFunction(4))
+    println(shortened(3))
+    println(sum.invoke(3, 3))
+    println(intFunction(4))
     println(tester(4))
-//    println(a(4))
-//    println(4.intPlus(4))
+    println(a(4))
+    println(4.intPlus(4))
     val p =
         (1..10).fold(1) { acc, i ->
             acc * i
