@@ -7,6 +7,7 @@ public class JVMFieldAccess {
         String name = session.name;
 
         AppUtils.INSTANCE.install2();
+        AppUtils.install();
     }
 }
 

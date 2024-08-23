@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/data-store" />
             <option value="$PROJECT_DIR$/eventbus-example" />
             <option value="$PROJECT_DIR$/hilt-example" />
+            <option value="$PROJECT_DIR$/hilt-example-2" />
             <option value="$PROJECT_DIR$/job-scheduler-example" />
             <option value="$PROJECT_DIR$/koin-test" />
             <option value="$PROJECT_DIR$/mockito" />
