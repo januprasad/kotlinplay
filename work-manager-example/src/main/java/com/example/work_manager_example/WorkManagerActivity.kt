@@ -3,6 +3,7 @@ package com.example.work_manager_example
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -101,9 +102,11 @@ class WorkManagerActivity : AppCompatActivity() {
                     // The registered ActivityResultCallback gets the result of this request.
                     //  if (Build.VERSION.SDK_INT >= 33) {
                     //   Log.e(TAG, "onCreate: 33" )
-                    requestPermissionLauncher.launch(
-                        android.Manifest.permission.POST_NOTIFICATIONS,
-                    )
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        requestPermissionLauncher.launch(
+                            android.Manifest.permission.POST_NOTIFICATIONS,
+                        )
+                    }
                     // }
                 }
             }

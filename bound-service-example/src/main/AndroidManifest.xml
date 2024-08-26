@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bound_service_example">
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BoundServiceApp">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivityBound2"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivityBound1"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +28,7 @@
         </activity>
 
         <service
-            android:name=".MyBoundService"
+            android:name=".MyShareBoundService"
             android:enabled="true"
             android:exported="false" />
         <service

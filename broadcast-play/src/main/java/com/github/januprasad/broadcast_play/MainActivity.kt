@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -42,11 +43,13 @@ class MainActivity :
                         })
                     },
                 ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                    ) {
-                        sendBroadcast()
+                    Column {
+                        Greeting(
+                            name = "Android",
+                            modifier = Modifier.padding(innerPadding),
+                        ) {
+                            sendBroadcast()
+                        }
                     }
                 }
             }
@@ -170,7 +173,7 @@ fun Greeting(
         text = "Hello $name!",
         modifier = modifier,
     )
-    Button(onClick = { /*TODO*/ }) {
+    Button(onClick = { sendBroadcast() }) {
         Text("Local Broadcast Notification")
     }
 }
