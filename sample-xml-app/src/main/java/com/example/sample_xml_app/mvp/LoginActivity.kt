@@ -7,14 +7,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.sample_xml_app.R
 import com.example.sample_xml_app.databinding.ActivityLoginBinding
+import com.example.sample_xml_app.mvp.model.LoginModelImpl
 
 class LoginActivity :
     AppCompatActivity(),
     LoginView {
-    private lateinit var presenter: LoginPresenter
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +29,22 @@ class LoginActivity :
             insets
         }
 
-        presenter = LoginPresenter(this, LoginModelImpl())
+        val loginImpl = LoginModelImpl(LoginService())
+
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        viewModel.injectLoginModel(loginImpl)
         binding.login.setOnClickListener {
-            presenter.login("A", "B")
+            val username = "username"
+            val password = "password"
+            viewModel.login(username, password)
+        }
+
+        viewModel.loginState.observe(this) { state ->
+            when (state) {
+                is LoginState.Loading -> showLoading()
+                is LoginState.Success -> showLoginSuccess(state.message)
+                is LoginState.Error -> showLoginError(state.message)
+            }
         }
 
 //        binding.login.setOnClickListener<WeakReference<View.OnClickListener>> {
@@ -38,14 +53,15 @@ class LoginActivity :
     }
 
     override fun showLoading() {
+        disableUI()
         binding.progress.visibility = View.VISIBLE
     }
 
-    override fun disableUI() {
+    fun disableUI() {
         binding.login.isEnabled = false
     }
 
-    override fun enableUI() {
+    fun enableUI() {
         binding.login.isEnabled = true
     }
 
@@ -53,11 +69,13 @@ class LoginActivity :
         binding.progress.visibility = View.GONE
     }
 
-    override fun showLoginSuccess() {
+    override fun showLoginSuccess(message: String) {
+        hideLoading()
+        enableUI()
         Toast.makeText(this, "Login success", Toast.LENGTH_LONG).show()
     }
 
-    override fun showLoginFailure(errorMessage: String) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+    override fun showLoginError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
