@@ -1,9 +1,11 @@
 package com.github.interview_prep
 
-import okhttp3.internal.wait
 import kotlin.random.Random
 
-data class Student(val name: String, val age: Int) {
+data class Student(
+    val name: String,
+    val age: Int,
+) {
     var id = 0
 }
 
@@ -11,7 +13,7 @@ fun main() {
     val john = Student("John", 19)
 
     john.run {
-        id = 1// generate and save but readability issues there.
+        id = 1 // generate and save but readability issues there.
         println(id)
     }
     john.let {
@@ -20,7 +22,11 @@ fun main() {
         // un necessary take it
     }
     println(john.id)
-}
 
+    repeat(10) {
+        val loginResult = listOf(true, false).random()
+        println(loginResult)
+    }
+}
 
 fun generateId() = Random(100).nextInt()
