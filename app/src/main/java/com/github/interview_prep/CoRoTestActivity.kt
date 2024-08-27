@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -33,6 +34,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.random.Random
 
 class CoRoTestActivity :
     ComponentActivity(),
@@ -62,6 +64,25 @@ class CoRoTestActivity :
 //        }
     }
 }
+
+@Composable
+fun MyComposable() {
+    // Use myValue in the composable
+
+    val (count, setCount) = remember { mutableIntStateOf(0) }
+    val myValue =
+        remember(key1 = count) {
+            mutableIntStateOf(
+                calculateExpensiveValue(),
+            )
+        }
+    Text(text = "${myValue.intValue}")
+    Button(onClick = { setCount(count + 1) }) {
+        Text("Count: $count")
+    }
+}
+
+fun calculateExpensiveValue() = Random(1).nextInt(1000)
 
 @Composable
 fun AppScreen(
@@ -110,6 +131,8 @@ fun AppScreen(
         Button(onClick = { viewModel.updateState() }) {
             Text(text = "Click me")
         }
+
+        MyComposable()
     }
 }
 

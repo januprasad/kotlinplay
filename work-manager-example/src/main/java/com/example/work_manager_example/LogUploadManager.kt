@@ -4,7 +4,9 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 
-class LogUploadManager(private val activityContext: WorkManagerActivity) : WorkerContract{
+class LogUploadManager(
+    private val activityContext: WorkManagerActivity,
+) : WorkerContract {
     private lateinit var workReq: WorkRequest
     private var toastManager: ToastManager = ToastManager(activityContext)
 

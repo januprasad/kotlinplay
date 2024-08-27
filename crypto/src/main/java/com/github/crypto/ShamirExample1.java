@@ -114,7 +114,7 @@ public final class ShamirExample1 {
     private static final int CERTAINTY = 50;
 
     public static void main(final String[] args) {
-        final ShamirExample1 shamir = new ShamirExample1(3, 10000);
+        final ShamirExample1 shamir = new ShamirExample1(3, 3);
 
         final BigInteger secret = new BigInteger("1234567890123456789012345678901234567890");
         final SecretShare[] shares = shamir.split(secret);
