@@ -6,6 +6,10 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyBoundService.class);
         startService(intent);
         bindService(intent, boundServiceConnection, BIND_AUTO_CREATE);
+
+        Intent intent1 = new Intent(this, MyForegroundService.class);
+        startService(intent1);
     }
 
     @Override
@@ -49,18 +56,30 @@ public class MainActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainActivity.this, String.valueOf(myBoundService.randomGenerator()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,
+                        String.valueOf(myBoundService.randomGenerator()),
+                        Toast.LENGTH_SHORT).show();
             }
         };
         Handler handler = new Handler();
         handler.postDelayed(runnable, 3000);
+        TextView name = findViewById(R.id.name);
+       /* Handler handler2 = new Handler(Looper.getMainLooper());
+        handler2.post(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            name.setText("Connect");
+        });*/
+
 
         /**
          * forground service
          */
 
-        Intent intent = new Intent(this, MyForegroundService.class);
-        startService(intent);
+
     }
 
     @Override

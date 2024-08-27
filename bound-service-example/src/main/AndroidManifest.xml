@@ -28,6 +28,10 @@
         </activity>
 
         <service
+            android:name=".MyBoundService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
             android:name=".MyShareBoundService"
             android:enabled="true"
             android:exported="false" />

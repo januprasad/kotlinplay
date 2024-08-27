@@ -21,6 +21,14 @@
       </SelectionState>
       <SelectionState runConfigName="bound-service-example">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-08-27T09:27:43.660083Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/januprasad/.android/avd/Pixel_3_XL_API_33.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="canvas-samples">
         <option name="selectionMode" value="DROPDOWN" />
