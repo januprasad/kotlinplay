@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -25,9 +27,12 @@ android {
             "API_BASE_URL",
             "\"https://gist.githubusercontent.com/skydoves/176c209dbce4a53c0ff9589e07255f30/raw/6489d9712702e093c4df71500fb822f0d408ef75/\"",
         )
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
         buildConfigField("String", "DATABASE_NAME", "\"app-db\"")
         buildConfigField("int", "DATABASE_VERSION", "1")
         buildConfigField("boolean", "DATABASE_EXPORT_SCHEMA", "false")
+        buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
     }
 
     buildTypes {
