@@ -6,7 +6,6 @@ import com.github.interview_prep.mockkk.MainContract
 import com.github.interview_prep.mockkk.MainPresenter
 import com.github.interview_prep.mockkk.UiDataModel
 import io.mockk.MockKAnnotations
-import io.mockk.core.ValueClassSupport.boxedValue
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.slot
@@ -20,7 +19,6 @@ import org.junit.Before
 import org.junit.Test
 
 class MainPresenterTest {
-
     @RelaxedMockK
     lateinit var view: MainContract.View
 
@@ -37,14 +35,14 @@ class MainPresenterTest {
 
     @Test
     fun `test fetchData with an empty result`() {
-        //it mocks the real data to empty list on every test
+        // it mocks the real data to empty list on every test
         every { dataRepository.fetchData() } returns listOf()
-        //when it call it release the mock value
+        // when it call it release the mock value
         mainPresenter.fetchData()
 
         val captureData = slot<List<UiDataModel>>()
 
-        //check inside that exact call how many time it called.
+        // check inside that exact call how many time it called.
         verify(exactly = 1) { view.onResult(capture(captureData)) }
         captureData.captured.let { res ->
             assertNotNull(res)
@@ -52,12 +50,11 @@ class MainPresenterTest {
         }
     }
 
-
     @Test
     fun `test fetchDataViaCallback with an result`() {
         val captureCallback = slot<(data: List<DataModel>) -> Unit>()
         every { dataRepository.fetchData(capture(captureCallback)) } answers {
-            val fakeList = listOf(DataModel(1,"value 1"))
+            val fakeList = listOf(DataModel(1, "value 1"))
             captureCallback.captured.invoke(fakeList)
         }
         mainPresenter.fetchDataViaCallback()
@@ -67,9 +64,10 @@ class MainPresenterTest {
             assertNotNull(res)
             assert(res.isNotEmpty())
             val first = res.first()
-            assertEquals("value 1",first.value)
+            assertEquals("value 1", first.value)
         }
     }
+
     @Test
     fun `Test fetchData with an exception`() {
         every { dataRepository.fetchData() } throws IllegalStateException("Houston we have a problem")
@@ -78,6 +76,7 @@ class MainPresenterTest {
         verify(exactly = 0) { view.onResult(any()) }
         verify(exactly = 1) { view.onError(any()) }
     }
+
     @Test
     fun `test fetchDataViaRX with an empty result`() {
         every { dataRepository.fetchDataWithRX() } returns Single.just(listOf())
@@ -92,14 +91,14 @@ class MainPresenterTest {
 
     @Test
     fun `test fetchDataViaRX with an valid result`() {
-        every { dataRepository.fetchDataWithRX() } returns Single.just(listOf(DataModel(1,"value 1")))
+        every { dataRepository.fetchDataWithRX() } returns Single.just(listOf(DataModel(1, "value 1")))
         mainPresenter.fetchDataViaRX()
         val captureData = slot<List<UiDataModel>>()
         verify(exactly = 1) { view.onResult(capture(captureData)) }
         captureData.captured.let { res ->
             assertNotNull(res)
             assert(res.isNotEmpty())
-            assertEquals("value 1",res.first().value)
+            assertEquals("value 1", res.first().value)
         }
     }
 
@@ -110,8 +109,6 @@ class MainPresenterTest {
         verify(exactly = 0) { view.onResult(any()) }
         verify(exactly = 1) { view.onError(any()) }
     }
-
-
 
     @After
     fun tearDown() {

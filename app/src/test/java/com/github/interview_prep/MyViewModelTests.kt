@@ -15,18 +15,15 @@ import org.junit.Before
 import org.junit.Test
 
 class MyViewModelTests {
-
     private lateinit var myViewModel: MyViewModel
     val dispatcherProvider = TestDispatcherProvider()
 
-
     @RelaxedMockK
     lateinit var client: HttpClient
+
     @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun init() {
-
-//        myViewModel = MyViewModel(dispatcherProvider)
         myViewModel = MyViewModel()
         client = HttpClient()
     }
@@ -37,7 +34,7 @@ class MyViewModelTests {
         val mobula = mockk<Mobula>()
         runTest {
             coEvery {
-               mobula.test("").await()
+                mobula.test("").await()
             } returns "Abcd"
 
             myViewModel.test("Abcd")
@@ -52,10 +49,8 @@ class MyViewModelTests {
                 )
                 cancelAndIgnoreRemainingEvents()
             }
-
         }
     }
-
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
@@ -67,7 +62,6 @@ class MyViewModelTests {
 //                price = 100000.0,
 //                symbol = "BTC"
 //            ))
-
 
 //        runTest {
 //            coEvery {
@@ -84,24 +78,23 @@ class MyViewModelTests {
 //                cancelAndIgnoreRemainingEvents()
 //            }
 //
-////            coEvery {
-////                mobula.parse("Abc").await()
-////            } returns responseObject
+// //            coEvery {
+// //                mobula.parse("Abc").await()
+// //            } returns responseObject
 //
-////            coEvery {
-////                responseObject.data
-////            } returns cryptoReponse
-////
+// //            coEvery {
+// //                responseObject.data
+// //            } returns cryptoReponse
+// //
 //
 //
-////            coVerify(exactly = 2) {
-////                mobula.test("")
-////            }
+// //            coVerify(exactly = 2) {
+// //                mobula.test("")
+// //            }
 //
 
 //        }
     }
-
 
     @After
     fun tearDown() {
@@ -109,5 +102,4 @@ class MyViewModelTests {
             myViewModel.viewModelScope.cancel()
         }
     }
-
 }
