@@ -46,6 +46,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
 }
 
 dependencies {
@@ -74,4 +77,6 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.play.services.location)
+    // compose permission
+    implementation(libs.accompanist.permissions)
 }

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MyViewModel
+    private lateinit var numberViewModel: NumberViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,17 @@ class MainActivity : AppCompatActivity() {
             viewModel.scorePoint()
         }
         Log.v("Application", "onCreate")
+        val viewModelFactory = MyViewModelFactory(101)
+//        numberViewModel = ViewModelProvider(this, viewModelFactory)[NumberViewModel::class.java]
+//        numberViewModel.number.observe(this) {
+//            score_view.text = it.toString()
+//        }
+
+        numberViewModel = MyViewModelFactory(101).create(NumberViewModel::class.java)
+
+        numberViewModel.number.observe(this) {
+            score_view.text = it.toString()
+        }
     }
 
     override fun onStart() {

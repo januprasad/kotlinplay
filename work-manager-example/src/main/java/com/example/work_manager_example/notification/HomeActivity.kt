@@ -39,29 +39,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(view)
 
         checkNotificationPermission =
-            registerForActivityResult(
-                ActivityResultContracts.RequestPermission(),
-            ) { isGranted: Boolean ->
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
                 isPermission = isGranted
             }
 
         userInterface()
 
         checkPermission()
-    }
-
-    private fun checkPermission() {
-        if (SDK_INT >= TIRAMISU) {
-            if (checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
-                isPermission = true
-            } else {
-                isPermission = false
-
-                checkNotificationPermission.launch(POST_NOTIFICATIONS)
-            }
-        } else {
-            isPermission = true
-        }
     }
 
     private fun userInterface() {
@@ -108,6 +92,20 @@ class HomeActivity : AppCompatActivity() {
                     checkNotificationPermission.launch(POST_NOTIFICATIONS)
                 }
             }
+        }
+    }
+
+    private fun checkPermission() {
+        if (SDK_INT >= TIRAMISU) {
+            if (checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+                isPermission = true
+            } else {
+                isPermission = false
+
+                checkNotificationPermission.launch(POST_NOTIFICATIONS)
+            }
+        } else {
+            isPermission = true
         }
     }
 

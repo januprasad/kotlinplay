@@ -44,4 +44,5 @@
     <string name="log_for_running">You will be notified on every 15 minutes with new location.</string>
     <string name="log_for_stopped">Click on Start to get location on every 15 minutes</string>
     <string name="button_text_start">Start</string>
+    <string name="title_activity_location_req">LocationReqActivity</string>
 </resources>
