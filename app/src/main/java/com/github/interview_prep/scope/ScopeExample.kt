@@ -21,7 +21,7 @@ fun main() {
     val os =
         s.run {
             school.student.name
-            this
+            this.name
         }
 
     val name =

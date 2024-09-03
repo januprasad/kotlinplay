@@ -108,4 +108,5 @@ dependencies {
     implementation(libs.rxjava)
     implementation(libs.gson)
     testImplementation(libs.androidx.core.testing)
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.10")
 }

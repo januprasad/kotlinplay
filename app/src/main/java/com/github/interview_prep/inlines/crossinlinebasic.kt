@@ -8,6 +8,7 @@ fun main() {
     println("World")
 }
 
+// so basically it wont allow local return values
 inline fun corssinlineTest(crossinline func: () -> Unit) {
     func()
 }
