@@ -16,11 +16,16 @@ class AnimalConsumer : Consumer<Animal> {
     }
 }
 
+// This works because Animal is a supertype of Cat
 fun feed(consumer: Consumer<Cat>) {
     consumer.consume(Cat())
 }
 
 fun main() {
+    // This works because Animal is a supertype of Cat
     val animalConsumer: Consumer<Animal> = AnimalConsumer()
-    feed(animalConsumer) // This works because Animal is a supertype of Cat
+    feed(animalConsumer) // open this feed you will know
+
+    val catConsumer: Consumer<Cat> = AnimalConsumer()
+    feed(catConsumer)
 }

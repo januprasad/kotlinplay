@@ -7,41 +7,33 @@ Keyword: in
 Typically used for input positions (function parameters).
  */
 interface AnimalCare<in T> {
-    fun takeCareOf(animal: T)
+    fun takeCareOf(animal: T): String
 }
 
 class Vet : AnimalCare<Animal> {
-    override fun takeCareOf(animal: Animal) {
-        animal.name()
-    }
+    override fun takeCareOf(animal: Animal): String = "Vet Must take care ${animal.name()}"
 }
 
 class Vet1 : AnimalCare<Animal> {
-    override fun takeCareOf(animal: Animal) {
-        animal.name()
-    }
+    override fun takeCareOf(animal: Animal): String = "Vet1 Must take care ${animal.name()}"
 }
 
 abstract class Animal {
-    abstract fun name()
+    abstract fun name(): String
 }
 
 class Dog : Animal() {
-    override fun name() {
-        println("Puppy")
-    }
+    override fun name(): String = "Puppy"
 }
 
 class Cat : Animal() {
-    override fun name() {
-        println("Veerappan")
-    }
+    override fun name() = "Veerappan"
 }
 
 fun main() {
     val animalCare: AnimalCare<Dog> = Vet()
-    animalCare.takeCareOf(Dog())
+    println(animalCare.takeCareOf(Dog()))
 
     val animalCare1: AnimalCare<Cat> = Vet1()
-    animalCare1.takeCareOf(Cat())
+    println(animalCare1.takeCareOf(Cat()))
 }
