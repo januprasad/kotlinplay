@@ -15,13 +15,21 @@
         android:theme="@style/Theme.Interviewprep"
         tools:targetApi="31">
         <activity
+            android:name=".dualpane.ItemDetailHostActivity"
+            android:exported="false"
+            android:label="@string/title_activity_item_detail_host"
+            android:resizeableActivity="true"
+            tools:targetApi="24" />
+        <activity
             android:name=".RecyclerViewExample"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".AnimationActivity"
@@ -48,7 +56,7 @@
             android:name=".CoRoActivity"
             android:exported="true"
             android:label="@string/title_activity_co_ro"
-            android:theme="@style/Theme.Interviewprep"></activity>
+            android:theme="@style/Theme.Interviewprep" />
         <activity
             android:name=".StateSaverActivity"
             android:exported="true"

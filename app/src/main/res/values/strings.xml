@@ -5,4 +5,7 @@
     <string name="title_activity_animation">AnimationActivity</string>
     <string name="title_activity_state_saver">StateSaverActivity</string>
     <string name="title_activity_co_ro2">CoRo2Activity</string>
+    <string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
 </resources>
