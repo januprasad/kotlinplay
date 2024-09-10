@@ -44,11 +44,20 @@ class PepperoniPizzaBuilder : PizzaBuilder {
         return this
     }
 
-    override fun addSauce(sauce: Sauce): PizzaBuilder = this
+    override fun addSauce(sauce: Sauce): PizzaBuilder {
+        pizza.addSauce(sauce)
+        return this
+    }
 
-    override fun addCheese(cheese: Cheese): PizzaBuilder = this
+    override fun addCheese(cheese: Cheese): PizzaBuilder {
+        pizza.addCheese(cheese)
+        return this
+    }
 
-    override fun addToppings(toppings: List<Topping>): PizzaBuilder = this
+    override fun addToppings(toppings: List<Topping>): PizzaBuilder {
+        pizza.addToppings(toppings)
+        return this
+    }
 
     // ... other methods
 
@@ -66,11 +75,20 @@ class PizzaBuilderImpl : PizzaBuilder {
         return this
     }
 
-    override fun addSauce(sauce: Sauce): PizzaBuilder = this
+    override fun addSauce(sauce: Sauce): PizzaBuilder {
+        this.sauce = sauce
+        return this
+    }
 
-    override fun addCheese(cheese: Cheese): PizzaBuilder = this
+    override fun addCheese(cheese: Cheese): PizzaBuilder {
+        this.cheese = cheese
+        return this
+    }
 
-    override fun addToppings(toppings: List<Topping>): PizzaBuilder = this
+    override fun addToppings(toppings: List<Topping>): PizzaBuilder {
+        this.toppings.plus(toppings)
+        return this
+    }
 
     override fun build(): Pizza = Pizza(crust!!, sauce!!, cheese!!, toppings)
 }
