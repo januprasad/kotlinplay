@@ -49,7 +49,7 @@
       </SelectionState>
       <SelectionState runConfigName="work-manager-example">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-08-16T07:59:26.635405Z">
+        <DropdownSelection timestamp="2024-09-10T15:30:44.997353Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=/Users/januprasad/.android/avd/Pixel_3_XL_API_33.avd" />
