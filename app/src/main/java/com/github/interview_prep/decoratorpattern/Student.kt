@@ -48,8 +48,6 @@ class ExtracurricularActivitiesDecorator(
     }
 }
 
-val studenTutionFee = BaseStudent("JK", 10000.0)
-
 fun main() {
     val student = BaseStudent("John Doe", 10000.0)
     val studentWithAcademicHonor = AcademicHonorDecorator(student)
@@ -63,6 +61,7 @@ fun main() {
 //    println("student With Extracurricular Activities tuition: ${studentWithExtracurricularActivities.getTuition()}")
 
     println("------------------------------------------------")
+    val studenTutionFee = BaseStudent("JK", 10000.0)
     println("Base student tuition: for ${studenTutionFee.getTuition()}")
     val studenTutionFeeValue = studenTutionFee.withAcademicHonor().withFinancialAid()
     println("student withAcademicHonor, withFinancialAid tuition: for ${studenTutionFeeValue.getTuition()}")

@@ -40,8 +40,8 @@ fun main() {
     val factorsFive = FactorsFive(baseNumber)
     val factorsThreeAndFive = FactorsThree(factorsFive)
     val factorsThree = FactorsThree(baseNumber)
-    println(" OG " + baseNumber.generate())
-    println(" Factors 5 " + factorsFive.generate())
-    println(" Factors 3 from O G " + factorsThree.generate())
-    println(" Factors 3 & 5 (from the last out such as factors of 5)" + factorsThreeAndFive.generate())
+    println(" OG : " + baseNumber.generate())
+    println(" Factors 5 : " + factorsFive.generate())
+    println(" Factors 3 from O G : " + factorsThree.generate())
+    println(" Factors 3 & 5 (from the last out such as factors of 5) : " + factorsThreeAndFive.generate())
 }

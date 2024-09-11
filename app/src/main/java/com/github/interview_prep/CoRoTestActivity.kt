@@ -27,6 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.interview_prep.ui.theme.InterviewprepTheme
 import kotlinx.coroutines.delay
@@ -59,9 +60,13 @@ class CoRoTestActivity :
         }
         setup(this)
         event("On create")
-//        lifecycleScope.launch {
-//            delay(18000L)
-//        }
+        lifecycleScope.launch {
+            try {
+                val x = 10 / 0
+            } catch (e: ArithmeticException) {
+                e.printStackTrace()
+            }
+        }
     }
 }
 
