@@ -8,15 +8,21 @@ interface EventListener<in T> {
     fun onEvent(event: T)
 }
 
-class Button : View {
+open class Button : View {
     override fun callOnClick() {
         println("Button clicked!")
     }
 }
 
-class OutlinedButton : View {
+class OutlinedButton : Button() {
     override fun callOnClick() {
         println("OutlinedButton clicked!")
+    }
+}
+
+class CorneredButton : Button() {
+    override fun callOnClick() {
+        println("CorneredButton clicked!")
     }
 }
 
@@ -28,9 +34,14 @@ class OnClickListener : EventListener<View> {
 
 fun main() {
     val listener: EventListener<View> = OnClickListener()
-    val view: View = Button()
-    listener.onEvent(view) // No error
+    invokeButtonAction(listener, Button())
+    invokeButtonAction(listener, OutlinedButton()) // if OutlinedButton is subtype of Button then only it accepts click events
+    invokeButtonAction(listener, CorneredButton()) // if CorneredButton is subtype of Button then only it accepts click events
+}
 
-    val view1: View = OutlinedButton()
-    listener.onEvent(view1) // No error
+fun invokeButtonAction(
+    listener: EventListener<Button>,
+    view: Button,
+) {
+    listener.onEvent(view)
 }

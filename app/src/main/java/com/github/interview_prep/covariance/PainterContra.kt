@@ -1,5 +1,8 @@
 package com.github.interview_prep.covariance
 
+/**
+ * you are going to paint with a color of
+ */
 interface Painter<in T> {
     fun onPaint(event: T)
 }

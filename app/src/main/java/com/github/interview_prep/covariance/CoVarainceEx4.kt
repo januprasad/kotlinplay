@@ -30,7 +30,7 @@ class Case<in T> {
     fun consume(item: T) = contents.add(item) // Consumer: OK
 }
 
-fun useConsumer(case: Case<Rifle>) {
+fun useConsumer(case: Case<Weapon>) {
     // Consumes Rifle and its subtypes
     case.consume(SniperRifle())
 }
@@ -41,7 +41,7 @@ fun main() {
 //    useProducer(Case<Rifle>())
 
 //    useConsumer(Case<SniperRifle>())               // Error
-    useConsumer(Case<Rifle>()) // OK
+//    useConsumer(Case<Rifle>()) // OK
     useConsumer(Case<Weapon>())
     useConsumer(Case<Ayudham>())
     useConsumer(Case<Tool>())
