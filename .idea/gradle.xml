@@ -33,6 +33,7 @@
             <option value="$PROJECT_DIR$/saved-state-handle" />
             <option value="$PROJECT_DIR$/solid" />
             <option value="$PROJECT_DIR$/stateflow-sharedflow" />
+            <option value="$PROJECT_DIR$/turbine-tests" />
             <option value="$PROJECT_DIR$/typesafe-nv" />
             <option value="$PROJECT_DIR$/work-manager-example" />
           </set>

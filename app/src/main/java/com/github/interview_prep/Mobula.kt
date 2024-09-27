@@ -10,7 +10,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 
-class Mobula {
+open class Mobula {
     private val client = HttpClient()
 
     suspend fun parse(cryptoResponse: String): Deferred<Response> {
