@@ -6,21 +6,26 @@ import kotlinx.coroutines.runBlocking
 
 fun main() {
     runBlocking {
-        val items22 = arrayOf(1, 2, 3)
-        val items = mutableListOf(1, 2, 3)
-        val items1 = mutableIntSetOf(1, 2, 3)
-        val items2 = mutableSetOf(1, 2, 3)
-        val screen1 = Screen2(items2)
-        val screen2 = Screen(items)
-        val screen3 = Screen3(items1)
-        val screen4 = Screen4(items22)
-        operate(items)
-        operate(items1)
-        operate2(items2)
-        println(screen1.numbers.size)
-        println(screen2.numbers.size)
-        println(screen3.numbers.size)
-        println(screen4.numbers.size)
+        val anArray = arrayOf(1, 2, 3)
+        val aList = arrayListOf(1, 2, 3)
+        val aMutableList = mutableListOf(1, 2, 3)
+        val aMutableIntSet = mutableIntSetOf(1, 2, 3)
+        val aMutableSetOf = mutableSetOf(1, 2, 3)
+        val setHolder = SetHolder(aMutableSetOf)
+        val mutableListHolder = ListHolder(aMutableList)
+        val intSetHolder = MutableIntSetHolder(aMutableIntSet)
+        val arrayHolder = ArrayHolder(anArray)
+        val listHolder = ListHolder(aList)
+        operate(aMutableList)
+        operate(aMutableIntSet)
+        operate2(aMutableSetOf)
+        operate4(aList)
+        // operate3(anArray)
+        println("aMutableSetOf " + setHolder.numbers.size)
+        println("aMutableList " + mutableListHolder.numbers.size)
+        println("aMutableIntSet " + intSetHolder.numbers.size)
+        println("anArray " + arrayHolder.numbers.size)
+        println("aList " + listHolder.numbers.size)
     }
 }
 
@@ -36,18 +41,22 @@ fun operate2(items: MutableSet<Int>) {
     items.clear()
 }
 
-class Screen4(
+fun operate4(items: ArrayList<Int>) {
+    items.clear()
+}
+
+class ArrayHolder(
     val numbers: Array<Int>,
 )
 
-class Screen(
+class ListHolder(
     val numbers: List<Int>,
 )
 
-class Screen2(
+class SetHolder(
     val numbers: Set<Int>,
 )
 
-class Screen3(
+class MutableIntSetHolder(
     val numbers: MutableIntSet,
 )

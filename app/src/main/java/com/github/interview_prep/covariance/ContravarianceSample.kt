@@ -36,4 +36,17 @@ fun main() {
 
     val animalCare1: AnimalCare<Cat> = Vet1()
     println(animalCare1.takeCareOf(Cat()))
+    val animals =
+        mutableListOf(
+            Cat(),
+            Cat(),
+        )
+    val animalWrapper = AnimalWrapper<Animal>()
+    animalWrapper.addAnimal(animals)
+}
+
+class AnimalWrapper<out T> {
+    fun addAnimal(animal: Collection<Animal>) {
+        animal.plus(Dog())
+    }
 }

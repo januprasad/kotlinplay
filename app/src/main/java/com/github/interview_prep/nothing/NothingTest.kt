@@ -1,8 +1,12 @@
 package com.github.interview_prep.nothing
 
 fun main() {
-//    println(noReturn())
+    val nothing = failed()
+    // println(nothing)
+    println("nothing")
 }
+
+fun failed(): Nothing = throw RuntimeException("failed")
 
 // fun getStringValue(): String = noReturn()
 //

@@ -18,6 +18,12 @@ fun main() {
             acc * i
         }
     println(p)
+
+    val sumeOfnubmber = (1..10).fold(0) { acc, i -> acc + i }
+    println(sumeOfnubmber)
+
+    val sumeOfnubmber1 = (1..10).reduce { acc, i -> acc * i }
+    println(sumeOfnubmber1)
 }
 
 fun test(sum: (x: Int, y: Int) -> Int): Int = sum.invoke(4, 5)

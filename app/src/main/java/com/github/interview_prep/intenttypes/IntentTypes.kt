@@ -3,7 +3,7 @@ package com.github.interview_prep.intenttypes
 fun main() {
     /**
      *
-     * This is implicit intent as we don't know the app going to use this intent , use specifici
+     * This is implicit intent as we don't know the app going to use this intent , use specification
      val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.example.com"))
      startActivity(intent)
 

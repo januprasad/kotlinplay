@@ -33,6 +33,7 @@ android {
         buildConfigField("int", "DATABASE_VERSION", "1")
         buildConfigField("boolean", "DATABASE_EXPORT_SCHEMA", "false")
         buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
+        buildConfigField("int", "MIN_AGE", properties.getProperty("MIN_AGE"))
     }
 
     buildTypes {
@@ -88,6 +89,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.lifecycle.runtime.compose.android)
     testImplementation(libs.junit)
     testImplementation(project(":mockito"))
     androidTestImplementation(libs.androidx.junit)
@@ -114,4 +116,5 @@ dependencies {
     implementation(libs.gson)
     testImplementation(libs.androidx.core.testing)
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.10")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
 }
