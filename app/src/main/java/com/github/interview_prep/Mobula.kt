@@ -7,6 +7,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 
 class Mobula {
@@ -45,6 +46,11 @@ class Mobula {
                 }
         }
         return response
+    }
+
+    suspend fun getString(s: String): String {
+        delay(2000L)
+        return s
     }
 
     fun test1(s: String) = "1"

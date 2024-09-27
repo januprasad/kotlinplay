@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.viewModelScope
 import app.cash.turbine.test
 import io.ktor.client.HttpClient
+import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.runTest
@@ -26,9 +26,13 @@ class MyViewModelTests {
     @RelaxedMockK
     lateinit var client: HttpClient
 
+    @RelaxedMockK
+    lateinit var mobula: Mobula
+
     @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun init() {
+        MockKAnnotations.init(this)
         myViewModel = MyViewModel()
         client = HttpClient()
     }
@@ -36,7 +40,6 @@ class MyViewModelTests {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `test`() {
-        val mobula = mockk<Mobula>()
         runTest {
             coEvery {
                 mobula.test("").await()

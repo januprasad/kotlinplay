@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 // private val coroutineDispatcher: DispatcherProvider
 class MyViewModel : ViewModel() {
-    val mobula = Mobula()
+    val mobula: Mobula = Mobula()
     private val _uiState: MutableStateFlow<AppState> = MutableStateFlow(AppState.Init)
     val uiState = _uiState.asStateFlow()
 
@@ -43,6 +43,14 @@ class MyViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = mobula.test(s)
             _uiState.value = AppState.Loaded(result.await())
+        }
+    }
+
+    fun testString(s: String) {
+        _uiState.value = AppState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = mobula.getString(s)
+            _uiState.value = AppState.Loaded(result)
         }
     }
 }
