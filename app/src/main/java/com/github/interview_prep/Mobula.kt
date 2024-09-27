@@ -15,9 +15,10 @@ class Mobula {
     suspend fun parse(cryptoResponse: String): Deferred<Response> {
         var crypto: Deferred<Response>
         coroutineScope {
-            crypto = async(Dispatchers.IO) {
-                return@async Json.decodeFromString<Response>(cryptoResponse)
-            }
+            crypto =
+                async(Dispatchers.IO) {
+                    return@async Json.decodeFromString<Response>(cryptoResponse)
+                }
         }
         return crypto
     }
@@ -25,10 +26,12 @@ class Mobula {
     suspend fun getMethod(param: String): Deferred<String> {
         var response: Deferred<String>
         coroutineScope {
-            response = async(Dispatchers.IO) {
-                return@async client.get("https://weburl=$param")
-                    .bodyAsText()
-            }
+            response =
+                async(Dispatchers.IO) {
+                    return@async client
+                        .get("https://weburl=$param")
+                        .bodyAsText()
+                }
         }
         return response
     }
@@ -36,9 +39,10 @@ class Mobula {
     suspend fun test(s: String): Deferred<String> {
         var response: Deferred<String>
         coroutineScope {
-            response = async(Dispatchers.IO) {
-                return@async s
-            }
+            response =
+                async(Dispatchers.IO) {
+                    return@async s
+                }
         }
         return response
     }

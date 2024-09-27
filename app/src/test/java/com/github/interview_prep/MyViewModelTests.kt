@@ -1,5 +1,6 @@
 package com.github.interview_prep
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.viewModelScope
 import app.cash.turbine.test
 import io.ktor.client.HttpClient
@@ -12,11 +13,15 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class MyViewModelTests {
     private lateinit var myViewModel: MyViewModel
     val dispatcherProvider = TestDispatcherProvider()
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @RelaxedMockK
     lateinit var client: HttpClient
