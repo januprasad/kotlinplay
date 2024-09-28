@@ -25,7 +25,7 @@ inline fun <reified T : Enum<T>> parse(name: String): T = enumValueOf<T>(name)
 
 inline fun <reified T : Enum<T>> getEnumValueNullable(name: String): T? =
     try {
-        parse<T>(name) // Retrieves the enum constant of the specified name
+        enumValueOf<T>(name) // Retrieves the enum constant of the specified name
     } catch (e: IllegalArgumentException) {
         null // Returns null if the name doesn't match any enum constants
     }
@@ -39,7 +39,6 @@ inline fun <reified T : Enum<T>> getEnumValueNonNullable(name: String): T? =
 
 inline fun <reified T : Enum<T>> getEnumValue(name: String): T =
     T::class.isSubclassOf(Enum::class).let {
-        @Suppress("UPPER_BOUND_VIOLATED")
         enumValueOf<T>(name) // Retrieves the enum constant of the specified name
     }
 
