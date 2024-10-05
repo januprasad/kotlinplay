@@ -1,8 +1,7 @@
-package com.example.mockito
+package com.example.mockito.sharedpref
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.mockito.sharedpref.Repository
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
@@ -38,6 +37,7 @@ class SharedPrefTest {
         whenever(
             editor.putString(anyString(), anyString()),
         ).thenReturn(editor)
+
         whenever(editor.commit()).thenReturn(true)
 
         // Initialize the class under test

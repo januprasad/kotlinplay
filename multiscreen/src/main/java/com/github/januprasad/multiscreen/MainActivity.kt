@@ -1,6 +1,5 @@
 package com.github.januprasad.multiscreen
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,10 +13,10 @@ class MainActivity :
         setContentView(R.layout.activity_main)
 
         // Temporary code, to be replace later
-        fragmentA.view?.setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java)
-            startActivity(intent)
-        }
+//        fragmentA.view?.setOnClickListener {
+//            val intent = Intent(this, DetailActivity::class.java)
+//            startActivity(intent)
+//        }
 
 //        val fragmentBView = findViewById<View>(R.id.fragmentB)
 //        mIsDualPane = fragmentBView?.visibility == View.VISIBLE

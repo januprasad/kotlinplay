@@ -26,7 +26,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.junit.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,4 +79,10 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     // Optional -- Mockk framework
     testImplementation(libs.mockk)
+    implementation(libs.androidx.work.runtime)
+    testImplementation(libs.androidx.work.runtime)
+    implementation(libs.androidx.work.testing)
+    implementation(libs.androidx.work.runtime.ktx)
+    testImplementation(libs.truth)
+    testImplementation(libs.robolectric)
 }

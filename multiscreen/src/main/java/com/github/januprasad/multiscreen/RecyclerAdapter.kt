@@ -41,8 +41,8 @@ class RecyclerAdapter(
             current: Destination,
             position: Int,
         ) {
-            itemView.tvTitle.text = current.title
-            itemView.img_row.setImageResource(current.image)
+//            itemView.tvTitle.text = current.title
+//            itemView.img_row.setImageResource(current.image)
             this.pos = position
             this.current = current
         }
