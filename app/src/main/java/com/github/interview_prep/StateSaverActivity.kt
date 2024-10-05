@@ -11,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.listSaver
-import androidx.compose.runtime.saveable.mapSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,7 +25,7 @@ class StateSaverActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting2(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
                     )
                 }
             }
@@ -34,27 +33,32 @@ class StateSaverActivity : ComponentActivity() {
     }
 }
 
-
-data class City(val name: String)
-
-val CitySaver = listSaver<City, Any>(
-    save = {
-        listOf(it.name)
-    },
-    restore = {
-        City(it[0] as String)
-    }
+data class City(
+    val name: String,
 )
 
+val CitySaver =
+    listSaver<City, Any>(
+        save = {
+            listOf(it.name)
+        },
+        restore = {
+            City(it[0] as String)
+        },
+    )
 
 @Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    val city = rememberSaveable(stateSaver = CitySaver) {
-        mutableStateOf(City("Kochi"))
-    }
+fun Greeting2(
+    name: String,
+    modifier: Modifier = Modifier,
+) {
+    val city =
+        rememberSaveable(stateSaver = CitySaver) {
+            mutableStateOf(City("Kochi"))
+        }
     Text(
         text = "Hello ${city.value.name}!",
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
