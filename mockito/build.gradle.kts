@@ -83,6 +83,6 @@ dependencies {
     testImplementation(libs.androidx.work.runtime)
     implementation(libs.androidx.work.testing)
     implementation(libs.androidx.work.runtime.ktx)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.truth)
-    testImplementation(libs.robolectric)
 }
