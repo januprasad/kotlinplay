@@ -1,3 +1,5 @@
+import java.net.URI
+
 pluginManagement {
     repositories {
         google {
@@ -16,6 +18,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = URI("https://jitpack.io") }
     }
 }
 
@@ -47,3 +50,4 @@ include(":eventbus-example")
 include(":hilt-example-2")
 include(":multiscreen")
 include(":turbine-tests")
+include(":alarm-manager")
