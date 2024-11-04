@@ -1,1 +1,1 @@
-Interview preparations on 2024
+Trying everything in Kotlin
