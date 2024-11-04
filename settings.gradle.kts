@@ -22,7 +22,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "interview-prep"
+rootProject.name = "Kotlin-Tryouts"
 include(":app")
 include(":solid")
 include(":crypto")

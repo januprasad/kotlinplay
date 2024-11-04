@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">interview-prep</string>
+    <string name="app_name">Kotlin-Tryouts</string>
     <string name="title_activity_co_ro">CoRoActivity</string>
     <string name="title_activity_co_ro_test">CoRoTestActivity</string>
     <string name="title_activity_animation">AnimationActivity</string>
