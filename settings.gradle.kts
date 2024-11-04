@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Kotlin-Tryouts"
 include(":app")
-include(":solid")
+include(":kotlin-bread-jams")
 include(":crypto")
 include(":stateflow-sharedflow")
 include(":mockito")
