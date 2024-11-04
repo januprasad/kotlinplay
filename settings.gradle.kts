@@ -1,5 +1,8 @@
 import java.net.URI
 
+include(":sold-properties")
+
+
 pluginManagement {
     repositories {
         google {
