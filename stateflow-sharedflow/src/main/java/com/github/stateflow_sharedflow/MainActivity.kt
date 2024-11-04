@@ -27,7 +27,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.github.stateflow_sharedflow.ui.theme.InterviewprepTheme
+import com.github.stateflow_sharedflow.ui.Theme.KotlinTryoutTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyApp(paddingValues = innerPadding)
                 }

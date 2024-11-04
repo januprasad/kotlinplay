@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.github.interview_prep"
+    namespace = "com.github.kotlintryout"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.github.interview_prep"
+        applicationId = "com.github.kotlin_tryout"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

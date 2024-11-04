@@ -1,4 +1,4 @@
-package com.github.interview_prep.mockConstructor
+package com.github.kotlin_tryout.mockConstructor
 
 import io.mockk.every
 import io.mockk.mockkConstructor

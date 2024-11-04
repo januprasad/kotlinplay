@@ -12,7 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
-import com.example.typesafe_nv.ui.theme.InterviewprepTheme
+import com.example.typesafe_nv.ui.Theme.KotlinTryoutTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar =

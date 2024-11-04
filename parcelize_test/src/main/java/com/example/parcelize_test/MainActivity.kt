@@ -12,7 +12,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.parcelize_test.ui.theme.InterviewprepTheme
+import com.example.parcelize_test.ui.Theme.KotlinTryoutTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         val c = this
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     App {
                         val i = Intent(c, HomeActivity::class.java)

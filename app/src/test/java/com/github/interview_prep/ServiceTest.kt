@@ -1,8 +1,8 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
-import com.github.interview_prep.loginfeature.User
-import com.github.interview_prep.loginfeature.UserRepository
-import com.github.interview_prep.loginfeature.UserService
+import com.github.kotlin_tryout.loginfeature.User
+import com.github.kotlin_tryout.loginfeature.UserRepository
+import com.github.kotlin_tryout.loginfeature.UserService
 import io.mockk.*
 import junit.framework.TestCase.assertEquals
 import org.junit.After

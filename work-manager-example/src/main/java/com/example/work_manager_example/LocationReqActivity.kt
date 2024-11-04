@@ -23,7 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import com.example.work_manager_example.ui.theme.InterviewprepTheme
+import com.example.work_manager_example.ui.Theme.KotlinTryoutTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -36,7 +36,7 @@ class LocationReqActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
                     TopAppBar(title = { Text(text = "App") })
                 }) { innerPadding ->

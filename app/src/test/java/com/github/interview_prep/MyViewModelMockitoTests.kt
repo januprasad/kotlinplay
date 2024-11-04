@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher

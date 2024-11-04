@@ -1,7 +1,7 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
-import com.github.interview_prep.dbservice.DBService
-import com.github.interview_prep.dbservice.School
+import com.github.kotlin_tryout.dbservice.DBService
+import com.github.kotlin_tryout.dbservice.School
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

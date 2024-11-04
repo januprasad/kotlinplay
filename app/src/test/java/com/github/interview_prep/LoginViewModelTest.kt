@@ -1,10 +1,10 @@
 @file:Suppress("ktlint:standard:no-wildcard-imports")
 
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
-import com.github.interview_prep.loginfeature.LoginViewModel
-import com.github.interview_prep.loginfeature.SessionManager
-import com.github.interview_prep.loginfeature.UserRepository
+import com.github.kotlin_tryout.loginfeature.LoginViewModel
+import com.github.kotlin_tryout.loginfeature.SessionManager
+import com.github.kotlin_tryout.loginfeature.UserRepository
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert

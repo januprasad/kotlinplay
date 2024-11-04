@@ -19,7 +19,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.github.januprasad.broadcast_play.ui.theme.InterviewprepTheme
+import com.github.januprasad.broadcast_play.ui.Theme.KotlinTryoutTheme
 
 class MainActivity :
     ComponentActivity(),
@@ -34,7 +34,7 @@ class MainActivity :
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {

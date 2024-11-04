@@ -1,10 +1,10 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
-import com.github.interview_prep.mockkk.DataModel
-import com.github.interview_prep.mockkk.DataRepository
-import com.github.interview_prep.mockkk.MainContract
-import com.github.interview_prep.mockkk.MainPresenter
-import com.github.interview_prep.mockkk.UiDataModel
+import com.github.kotlin_tryout.mockkk.DataModel
+import com.github.kotlin_tryout.mockkk.DataRepository
+import com.github.kotlin_tryout.mockkk.MainContract
+import com.github.kotlin_tryout.mockkk.MainPresenter
+import com.github.kotlin_tryout.mockkk.UiDataModel
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK

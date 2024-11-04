@@ -1,4 +1,4 @@
-package com.github.interview_prep.privatefunctiontest;
+package com.github.kotlin_tryout.privatefunctiontest;
 
 
 import static org.junit.Assert.assertEquals;

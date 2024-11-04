@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import com.github.januprasad.canvas_samples.ui.theme.InterviewprepTheme
+import com.github.januprasad.canvas_samples.ui.Theme.KotlinTryoutTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {

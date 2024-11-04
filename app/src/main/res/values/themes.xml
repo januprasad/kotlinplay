@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Interviewprep" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="Theme.KotlinTryout" parent="Theme.AppCompat.Light.NoActionBar" />
 
-    <style name="Theme.Interviewprep.NoActionBar">
+    <style name="Theme.KotlinTryout.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Interviewprep.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.KotlinTryout.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Interviewprep.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.KotlinTryout.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

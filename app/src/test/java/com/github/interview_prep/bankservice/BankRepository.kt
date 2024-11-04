@@ -1,4 +1,4 @@
-package com.github.interview_prep.bankservice
+package com.github.kotlin_tryout.bankservice
 
 interface BankRepository {
     fun getBalance(): Int

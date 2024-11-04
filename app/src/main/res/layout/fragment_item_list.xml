@@ -10,12 +10,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_list"
-        android:name="com.github.interview_prep.dualpane.ItemListFragment"
+        android:name="com.github.kotlin_tryout.dualpane.ItemListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.github.interview_prep.dualpane.ItemDetailHostActivity"
+        tools:context="com.github.kotlin_tryout.dualpane.ItemDetailHostActivity"
         tools:listitem="@layout/item_list_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest

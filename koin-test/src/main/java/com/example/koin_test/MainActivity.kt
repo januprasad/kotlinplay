@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.koin_test.ui.theme.InterviewprepTheme
+import com.example.koin_test.ui.Theme.KotlinTryoutTheme
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val viewModel: SettingsViewModel = getViewModel()
             val postsViewModel: PostsViewModel = getViewModel()
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {

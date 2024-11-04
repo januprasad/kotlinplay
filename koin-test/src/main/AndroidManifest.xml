@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".CoinSetupApp"
-        android:theme="@style/Theme.Interviewprep">
+        android:theme="@style/Theme.KotlinTryout">
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Interviewprep">
+            android:theme="@style/Theme.KotlinTryout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -14,7 +14,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.github.januprasad.hilt_example.ui.theme.InterviewprepTheme
+import com.github.januprasad.hilt_example.ui.theme.KotlinTryoutTheme
 import com.github.januprasad.hilt_example.ui.theme.pales
 import com.github.januprasad.hilt_example.ui.theme.textColor
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InterviewprepTheme {
+            KotlinTryoutTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {

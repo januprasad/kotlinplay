@@ -12,13 +12,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Interviewprep"
+        android:theme="@style/Theme.KotlinTryout"
         tools:targetApi="31">
         <activity
             android:name=".StateTestActivity"
             android:exported="true"
             android:label="@string/title_activity_state_test"
-            android:theme="@style/Theme.Interviewprep" >
+            android:theme="@style/Theme.KotlinTryout" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,12 +46,12 @@
             android:name=".AnimationActivity"
             android:exported="false"
             android:label="@string/title_activity_state_saver"
-            android:theme="@style/Theme.Interviewprep" />
+            android:theme="@style/Theme.KotlinTryout" />
         <activity
             android:name=".CoRoTestActivity"
             android:exported="true"
             android:label="@string/title_activity_animation"
-            android:theme="@style/Theme.Interviewprep">
+            android:theme="@style/Theme.KotlinTryout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,18 +62,18 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_co_ro_test"
-            android:theme="@style/Theme.Interviewprep" />
+            android:theme="@style/Theme.KotlinTryout" />
         <activity
             android:name=".CoRoActivity"
             android:exported="true"
             android:label="@string/title_activity_co_ro"
-            android:theme="@style/Theme.Interviewprep" />
+            android:theme="@style/Theme.KotlinTryout" />
         <activity
             android:name=".StateSaverActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:taskAffinity=".StateSaverActivity"
-            android:theme="@style/Theme.Interviewprep" />
+            android:theme="@style/Theme.KotlinTryout" />
     </application>
 
 </manifest>

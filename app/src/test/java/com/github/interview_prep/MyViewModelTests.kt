@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.viewModelScope

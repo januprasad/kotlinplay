@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
 fun main() {
    /* for(i in 10){

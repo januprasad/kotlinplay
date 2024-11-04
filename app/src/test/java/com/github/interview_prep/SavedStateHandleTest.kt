@@ -1,4 +1,4 @@
-package com.github.interview_prep
+package com.github.kotlin_tryout
 
 import androidx.lifecycle.SavedStateHandle
 import kotlinx.coroutines.test.runTest
