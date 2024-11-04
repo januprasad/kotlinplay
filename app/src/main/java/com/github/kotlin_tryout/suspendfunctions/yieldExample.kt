@@ -2,7 +2,7 @@ package com.github.kotlin_tryout.suspendfunctions
 
 import kotlinx.coroutines.*
 
-fun main() = runBlocking {
+fun main(): Unit = runBlocking {
     launch {
         repeat(5) { i ->
             println("Coroutine 1: $i")

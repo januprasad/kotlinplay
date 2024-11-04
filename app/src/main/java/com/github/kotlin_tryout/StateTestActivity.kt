@@ -37,7 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.github.kotlin_tryout.ui.Theme.KotlinTryoutTheme
+import com.github.kotlin_tryout.ui.theme.KotlinTryoutTheme
 
 class StateTestActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)

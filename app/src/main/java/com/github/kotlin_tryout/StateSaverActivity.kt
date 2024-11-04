@@ -14,7 +14,7 @@ import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.github.kotlin_tryout.ui.Theme.KotlinTryoutTheme
+import com.github.kotlin_tryout.ui.theme.KotlinTryoutTheme
 
 class StateSaverActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

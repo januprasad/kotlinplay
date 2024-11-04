@@ -19,7 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.github.januprasad.data_store.ui.Theme.KotlinTryoutTheme
+import com.github.januprasad.data_store.ui.theme.KotlinTryoutTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

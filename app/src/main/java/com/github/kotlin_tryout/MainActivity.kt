@@ -20,7 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.github.kotlin_tryout.ui.Theme.KotlinTryoutTheme
+import com.github.kotlin_tryout.ui.theme.KotlinTryoutTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 class MainActivity : ComponentActivity() {

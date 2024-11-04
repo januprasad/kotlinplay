@@ -19,7 +19,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.github.januprasad.broadcast_play.ui.Theme.KotlinTryoutTheme
+import com.github.januprasad.broadcast_play.ui.theme.KotlinTryoutTheme
 
 class MainActivity :
     ComponentActivity(),

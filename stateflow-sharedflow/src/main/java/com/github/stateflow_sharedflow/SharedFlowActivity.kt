@@ -26,7 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.github.stateflow_sharedflow.ui.Theme.KotlinTryoutTheme
+import com.github.stateflow_sharedflow.ui.theme.KotlinTryoutTheme
 
 class SharedFlowActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)

@@ -16,7 +16,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
-import com.github.kotlin_tryout.ui.Theme.KotlinTryoutTheme
+import com.github.kotlin_tryout.ui.theme.KotlinTryoutTheme
+import com.github.kotlintryout.BuildConfig
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

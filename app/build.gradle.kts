@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.github.kotlintryout"
+    namespace = "com.github.kotlin_tryout"
     compileSdk = 34
 
     defaultConfig {
