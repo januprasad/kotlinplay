@@ -107,7 +107,6 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.lifecycle.runtime.compose.android)
     testImplementation(libs.junit)
-    testImplementation(project(":mockito"))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -133,4 +132,5 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.10")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation(kotlin("test"))
 }

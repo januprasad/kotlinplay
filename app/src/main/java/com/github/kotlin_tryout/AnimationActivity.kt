@@ -45,7 +45,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.github.kotlin_tryout.ui.theme.KotlinTryoutTheme
-import com.github.kotlintryout.R
 import kotlinx.coroutines.delay
 
 class AnimationActivity : ComponentActivity() {
