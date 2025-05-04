@@ -30,7 +30,11 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.kotlin_tryout.ui.theme.KotlinTryoutTheme
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -65,6 +69,18 @@ class CoRoTestActivity :
                 val x = 10 / 0
             } catch (e: ArithmeticException) {
                 e.printStackTrace()
+            }
+        }
+
+        val sharedFlow1 = MutableSharedFlow<String>()
+
+        lifecycleScope.launch {
+            sharedFlow1
+                .onEach { println("flow example : "+it) }  // Collection
+                .launchIn(this)
+            launch {
+                sharedFlow1.emit("Ram")
+                sharedFlow1.emit("Kumar")      // Emission
             }
         }
     }
@@ -107,7 +123,8 @@ fun AppScreen(
             Mutex()
         }
     LaunchedEffect(true) {
-        repeat(10) {
+        //make it ten for
+        repeat(1) {
             launch {
                 /*mutex.lock()
                 try {
