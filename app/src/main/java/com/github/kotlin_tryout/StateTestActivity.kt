@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,7 +27,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -58,7 +66,7 @@ class StateTestActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(innerPadding),
                     ) {
-                        Greeting3()
+                        Greeting4()
                     }
                 }
             }
@@ -67,91 +75,33 @@ class StateTestActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting3(
-    viewModel: SampleStateViewModel =
-        androidx.lifecycle.viewmodel.compose
-            .viewModel(),
-) {
-    val state: String? by viewModel.name.collectAsStateWithLifecycle()
-    ContentGrid(
-        content =
-//            remember {
-            (1..20).map { DataItem("Item $it", "$it") },
-//            },
-    )
-}
-
-@Composable
-fun ContentGrid(content: List<DataItem>) {
-    LazyColumn(
-        Modifier
-            .fillMaxHeight(),
-    ) {
-        items(content) {
-            ContentElement(
-                item = it,
-                modifier =
-                    Modifier
-                        .fillMaxWidth(0.4f)
-                        .fillParentMaxHeight(0.2f),
-            )
-        }
+fun Greeting4() {
+    // Use mutableStateOf to hold and update the VehicleState
+    // Provide the current state to the CompositionLocal
+    CompositionLocalProvider(LocalVehicleState provides vehicleState) {
+        val vehicle = LocalVehicleState.current
+        SampleUI(
+            onTogglePrimary = {
+                // Update the state when the button is clicked
+                vehicle.isPrimary.value = false
+            }
+        )
     }
 }
 
-data class DataItem(
-    val title: String,
-    val price: String,
+@Composable
+fun SampleUI(onTogglePrimary: () -> Unit) {
+    val vehicle = LocalVehicleState.current
+    Text(text = "Is Primary: ${vehicle.isPrimary.value}")
+    Button(onClick = onTogglePrimary) {
+        Text("Toggle Primary")
+    }
+}
+
+data class VehicleState(
+    val isPrimary: MutableState<Boolean>
 )
 
-@Composable
-fun ContentElement(
-    item: DataItem,
-    modifier: Modifier,
-) {
-    Card(
-        modifier =
-            modifier
-                .padding(18.dp)
-                .clip(RoundedCornerShape(10))
-                .clickable(enabled = true, onClick = { }),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = Color(200, 200, 238, 226),
-                contentColor = Color.Black,
-            ),
-    ) {
-        Column(
-            modifier = Modifier.padding(18.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.cat),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier =
-                    Modifier
-                        .size(100.dp)
-                        .padding(8.dp)
-                        .clip(CircleShape),
-            )
-            /* AsyncImage(
-                  model = item.url,
-                  contentDescription = item.title,
-                  modifier = Modifier
-                      .size(200.dp, 200.dp)
-                      .clip(RoundedCornerShape(10)),
-                  contentScale = ContentScale.FillWidth),*/
-            Column(
-                Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.Start,
-            ) {
-                Spacer(Modifier.height(10.dp))
-                Text(item.title, fontSize = 15.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.height(10.dp))
-                Text(item.price, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            }
-        }
-    }
-}
+val vehicleState = VehicleState(isPrimary = mutableStateOf(true))
+
+val LocalVehicleState = staticCompositionLocalOf<VehicleState> { error("Not yet configured") }
