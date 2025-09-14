@@ -2,6 +2,7 @@
 accompanistPager = "0.34.0"
 accompanistPermissions = "0.25.0"
 agp = "8.4.2"
+androidxMaterial = "1.8.3"
 constraintlayoutCompose = "1.0.1"
 core = "1.6.0"
 coreTesting = "2.2.0"
@@ -83,6 +84,7 @@ androidx-lifecycle-viewmodel-compose-v284 = { module = "androidx.lifecycle:lifec
 androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+androidx-material-v183 = { module = "androidx.compose.material:material", version.ref = "androidxMaterial" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workRuntime" }
 eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }

@@ -60,6 +60,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.accompanist.pager)
     implementation(libs.androidx.material.icons.extended)
-    implementation("androidx.compose.material:material:+")
+    implementation(libs.androidx.material.v183)
 
 }

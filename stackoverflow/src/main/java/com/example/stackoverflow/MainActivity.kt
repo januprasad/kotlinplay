@@ -8,18 +8,19 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.PagerState
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.BottomNavigation
-import androidx.compose.material3.BottomNavigationItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -51,7 +52,7 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues = PaddingValues(),
     navController: NavHostController = rememberNavController(),
-    pagerState: PagerState = rememberPagerState(pageCount = { 3 })
+    pagerState: PagerState = androidx.compose.foundation.pager.rememberPagerState(pageCount = { 3 })
 ) {
     // Define the navigation routes
     val bottomBarScreens = listOf(
