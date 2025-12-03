@@ -1,4 +1,4 @@
-package com.github.kotlin_tryout
+package com.github.kotlin_tryout.wherebasic
 
 fun main() {
 }
