@@ -1,5 +1,6 @@
 package com.github.kotlin_tryout
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
@@ -10,6 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 // private val coroutineDispatcher: DispatcherProvider
 class MyViewModel : ViewModel() {
@@ -21,7 +24,7 @@ class MyViewModel : ViewModel() {
     val counter: LiveData<Int> get() = _counter
 
     init {
-        _counter.value = 0
+        _counter.value = Random(1000).nextInt(1000)
     }
 
     fun increment() {
@@ -53,6 +56,23 @@ class MyViewModel : ViewModel() {
             _uiState.value = AppState.Loaded(result)
         }
     }
+
+    fun handleAction(action: ViewModelAction) {
+        when(action){
+            ViewModelAction.Clear -> {
+                Log.v("App","clear ${counter.value}")
+            }
+            ViewModelAction.Save -> {
+                increment()
+                Log.v("App","saved ${counter.value}")
+            }
+        }
+    }
+}
+
+sealed interface ViewModelAction {
+    object Save : ViewModelAction
+    object Clear : ViewModelAction
 }
 
 sealed class AppState {

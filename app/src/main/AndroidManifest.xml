@@ -15,15 +15,28 @@
         android:theme="@style/Theme.KotlinTryout"
         tools:targetApi="31">
         <activity
+            android:name=".DemoActivity"
+            android:exported="true"
+            android:label="@string/title_activity_demo"
+            android:theme="@style/Theme.KotlinTryout" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".StateTestActivity"
             android:exported="true"
             android:label="@string/title_activity_state_test"
-            android:theme="@style/Theme.KotlinTryout" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:theme="@style/Theme.KotlinTryout">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".dualpane.ItemDetailHostActivity"
@@ -52,11 +65,6 @@
             android:exported="true"
             android:label="@string/title_activity_animation"
             android:theme="@style/Theme.KotlinTryout">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
