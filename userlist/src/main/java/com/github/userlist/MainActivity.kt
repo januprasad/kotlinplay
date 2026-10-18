@@ -1,6 +1,7 @@
 package com.github.userlist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -28,8 +29,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.userlist.ui.theme.KotlinTryoutsTheme
 
 class MainActivity : ComponentActivity() {
+    private val TAG = "MainActivityLifecycle"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.v(TAG, "onCreate: savedInstanceState is ${if (savedInstanceState == null) "null" else "NOT null"}")
+        savedInstanceState?.getString("demo_key")?.let {
+            Log.v(TAG, "Restored in onCreate: $it")
+        }
         enableEdgeToEdge()
         setContent {
             KotlinTryoutsTheme {
@@ -45,6 +52,19 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val dataToSave = "Some transient state at ${System.currentTimeMillis()}"
+        outState.putString("demo_key", dataToSave)
+        Log.v(TAG, "onSaveInstanceState: saved '$dataToSave'")
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val restoredData = savedInstanceState.getString("demo_key")
+        Log.v(TAG, "onRestoreInstanceState: restored '$restoredData'")
     }
 }
 
