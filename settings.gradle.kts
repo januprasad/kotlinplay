@@ -1,5 +1,8 @@
 import java.net.URI
 
+include(":mvi-sample")
+
+
 include(":handler-looper")
 
 
