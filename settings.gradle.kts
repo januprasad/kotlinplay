@@ -1,5 +1,8 @@
 import java.net.URI
 
+include(":coroutines")
+
+
 include(":mvi-sample")
 
 
