@@ -23,7 +23,9 @@ class MainActivity : FragmentActivity() {
                         onAuthenticated = { isAuthenticated = true }
                     )
                 } else {
-                    HomeScreen()
+                    HomeScreen(
+                        onLogout = { isAuthenticated = false }
+                    )
                 }
             }
         }

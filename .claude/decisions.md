@@ -6,3 +6,6 @@
 
 ## Update root README.md with detailed repository guide (2026-11-08)
 - Structure: Comprehensive overview, categorized directory of all 35+ modules, and quick navigation. User approved proposal.
+
+## Simplify HomeScreen to basic welcome screen (2026-11-08)
+- Structure: Clean welcome message ("Welcome! 🎉") and a Lock/Logout button to return to biometric authentication. User approved proposal.
